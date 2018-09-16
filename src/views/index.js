@@ -4,6 +4,7 @@ import RecipesList from './RecipesList';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import PasswordForget from './PasswordForget';
+import PasswordChange from './PasswordChange';
 
 export {
     RecipeAdd,
@@ -11,5 +12,6 @@ export {
     RecipesList,
     SignUp,
     SignIn,
-    PasswordForget
+    PasswordForget,
+    PasswordChange
 };
