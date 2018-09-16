@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Link } from 'react-router-dom';
 import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn } from './views';
+import { SignOutButton } from './components';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           <Link to="/recipesList">recipesList</Link>
           <Link to="/signUp">SignUp</Link>
           <Link to="/signIn">SignIn</Link>
+          <SignOutButton/>
         </nav>
         <div>
           <Route path="/recipeAdd" component={RecipeAdd}/>
