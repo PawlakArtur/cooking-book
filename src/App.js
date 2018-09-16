@@ -5,10 +5,16 @@ import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn } from './views';
 import { Navigation } from './components';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      authUser: null
+    };
+  }
   render() {
     return (
       <div>
-        <Navigation/>
+        <Navigation authUser={this.state.authUser}/>
         <div>
           <Route path="/recipeAdd" component={RecipeAdd}/>
           <Route path="/recipeDetails" component={RecipeDetails}/>
