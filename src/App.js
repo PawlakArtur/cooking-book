@@ -3,6 +3,7 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn } from './views';
 import { Navigation } from './components';
+import { firebase } from './firebase';
 
 class App extends Component {
   constructor() {
@@ -11,6 +12,15 @@ class App extends Component {
       authUser: null
     };
   }
+
+  componentDidMount() {
+    firebase.auth.onAuthStateChanged(authUser => {
+      authUser
+        ? this.setState({ authUser })
+        : this.setState({ authUser: null });
+    });
+  }
+
   render() {
     return (
       <div>
