@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget } from './views';
+import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget, Account } from './views';
 import { Navigation, withAuthentication } from './components';
 
 const App = () =>
@@ -14,6 +14,7 @@ const App = () =>
 			<Route path="/signUp" component={SignUp}/>
 			<Route path="/signIn" component={SignIn}/>
 			<Route path="/resetPassword" component={PasswordForget}/>
+			<Route path='/account' component={Account}/>
 		</div>
 	</Router>
 

@@ -20,6 +20,7 @@ const NavigationAuth = () =>
         <li><Link to="/recipeAdd">recipeAdd</Link></li>
         <li><Link to="/recipeDetails">recipeDetails</Link></li>
         <li><Link to="/recipesList">recipesList</Link></li>
+		<li><Link to="/account">account</Link></li>
         <li><SignOutButton/></li>
     </ul>;
 
