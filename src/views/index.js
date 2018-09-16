@@ -3,11 +3,13 @@ import RecipeDetails from './RecipeDetails';
 import RecipesList from './RecipesList';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import PasswordForget from './PasswordForget';
 
 export {
     RecipeAdd,
     RecipeDetails,
     RecipesList,
     SignUp,
-    SignIn
+    SignIn,
+    PasswordForget
 };
