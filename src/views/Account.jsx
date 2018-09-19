@@ -2,6 +2,7 @@ import React from 'react';
 import PasswordChange from './PasswordChange';
 import PasswordForget from './PasswordForget';
 import { AuthUserContext } from '../components';
+import { withAuthorization } from "../components";
 
 const Account = () =>
     <AuthUserContext.Consumer>
@@ -14,4 +15,6 @@ const Account = () =>
         }
     </AuthUserContext.Consumer>
 
-export default Account;
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(Account);
