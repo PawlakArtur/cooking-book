@@ -6,16 +6,16 @@ import { Navigation, withAuthentication } from './components';
 
 const App = () =>
 	<Router>
-    	<div>
-        	<Navigation/>
+		<div>
+			<Navigation/>
 			<Route path="/recipeAdd" component={RecipeAdd}/>
 			<Route path="/recipeDetails" component={RecipeDetails}/>
 			<Route path="/recipesList" component={RecipesList}/>
 			<Route path="/signUp" component={SignUp}/>
 			<Route path="/signIn" component={SignIn}/>
 			<Route path="/resetPassword" component={PasswordForget}/>
-			<Route path='/account' component={Account}/>
+			<Route path="/account" component={Account}/>
 		</div>
-	</Router>
+	</Router>;
 
 export default withAuthentication(App);

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 class RecipeAdd extends Component {
-    render() {
-        return (
-            <div>
+	render() {
+		return (
+			<div>
                 RecipeAdd
-            </div>
-        );
-    }
+			</div>
+		);
+	}
 }
 
 export default RecipeAdd;

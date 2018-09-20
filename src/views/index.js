@@ -5,15 +5,15 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
 import PasswordForget from './PasswordForget';
 import PasswordChange from './PasswordChange';
-import Account from './Account'
+import Account from './Account';
 
 export {
-    RecipeAdd,
-    RecipeDetails,
-    RecipesList,
-    SignUp,
-    SignIn,
-    PasswordForget,
-    PasswordChange,
-    Account
+	RecipeAdd,
+	RecipeDetails,
+	RecipesList,
+	SignUp,
+	SignIn,
+	PasswordForget,
+	PasswordChange,
+	Account
 };
