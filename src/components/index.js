@@ -5,9 +5,9 @@ import AuthUserContext from './AuthUserContext';
 import withAuthorization from './withAuthorization';
 
 export {
-    SignOutButton,
-    Navigation,
-    withAuthentication,
-    AuthUserContext,
-    withAuthorization
+	SignOutButton,
+	Navigation,
+	withAuthentication,
+	AuthUserContext,
+	withAuthorization
 };

@@ -21,7 +21,7 @@ class SignUp extends Component {
 	onSubmit(e) {
 		const { email, password } = this.state;
 		const { history } = this.props;
-        
+
 		auth.doCreateUserWithEmailAndPassword(email, password)
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
@@ -30,7 +30,7 @@ class SignUp extends Component {
 			.catch(error => {
 				this.setState({ error: error });
 			});
-        
+
 		e.preventDefault();
 	}
 
@@ -40,11 +40,10 @@ class SignUp extends Component {
 
 	render() {
 		const { userName, email, password, passwordConfirmation, error } = this.state;
-		const isInvalid =
-            password !== passwordConfirmation ||
-            password === '' ||
-            email === '' ||
-            userName === '';
+		const isInvalid = password !== passwordConfirmation
+            || password === ''
+            || email === ''
+            || userName === '';
 		return (
 			<div>
 				<h1>Signup</h1>
