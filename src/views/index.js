@@ -6,6 +6,7 @@ import SignIn from './SignIn';
 import PasswordForget from './PasswordForget';
 import PasswordChange from './PasswordChange';
 import Account from './Account';
+import Home from './Home';
 
 export {
 	RecipeAdd,
@@ -15,5 +16,6 @@ export {
 	SignIn,
 	PasswordForget,
 	PasswordChange,
-	Account
+	Account,
+	Home
 };

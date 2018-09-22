@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 
 const INITIAL_STATE = {
 	userName: '',
@@ -19,13 +19,19 @@ class SignUp extends Component {
 	}
 
 	onSubmit(e) {
-		const { email, password } = this.state;
+		const { email, password, userName } = this.state;
 		const { history } = this.props;
 
 		auth.doCreateUserWithEmailAndPassword(email, password)
-			.then(() => {
-				this.setState({ ...INITIAL_STATE });
-				history.push('/');
+			.then(authUser => {
+				db.doCreateUser(authUser.user.uid, userName, email)
+					.then(() => {
+						this.setState({ ...INITIAL_STATE });
+						history.push('/');
+					})
+					.catch(error => {
+						this.setState({ error: error });
+					});
 			})
 			.catch(error => {
 				this.setState({ error: error });
