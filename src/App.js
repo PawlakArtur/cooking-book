@@ -15,7 +15,7 @@ const App = () =>
 			<Route path="/signIn" component={SignIn}/>
 			<Route path="/resetPassword" component={PasswordForget}/>
 			<Route path="/account" component={Account}/>
-			<Route path="/" component={Home}/>
+			<Route path="/home" component={Home}/>
 		</div>
 	</Router>;
 
