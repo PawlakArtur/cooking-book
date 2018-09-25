@@ -32,7 +32,6 @@ class RecipesList extends Component {
 
 	render() {
 		const { error, recipes } = this.state;
-		console.log(recipes);
 		return (
 			<div>
 				<h1>Recipes list:</h1>
