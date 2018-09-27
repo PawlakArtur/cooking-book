@@ -86,7 +86,7 @@ class RecipeAdd extends Component {
 	}
 
 	addNewStep() {
-		this.setState(prevState => ({ recipeSteps: [ ...prevState.recipeSteps, '' ] }));
+		this.setState(prevState => ({ recipeSteps: [ ...prevState.recipeSteps, '' ]}));
 	}
 
 	render() {

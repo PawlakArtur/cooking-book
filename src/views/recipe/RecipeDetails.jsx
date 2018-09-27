@@ -30,7 +30,7 @@ class RecipeDetails extends Component {
 		const { recipe } = this.state;
 		return (
 			<div>
-				<Link to='/recipesList'>Back to list</Link>
+				<Link to="/recipesList">Back to list</Link>
 				<h1>Recipe name: {recipe && recipe.name}</h1>
 			</div>
 		);
