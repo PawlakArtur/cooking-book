@@ -1,7 +1,7 @@
 import React from 'react';
 import PasswordChange from './PasswordChange';
 import PasswordForget from './PasswordForget';
-import { AuthUserContext, withAuthorization } from '../components';
+import { AuthUserContext, withAuthorization } from '../../components';
 
 const Account = () =>
 	<AuthUserContext.Consumer>

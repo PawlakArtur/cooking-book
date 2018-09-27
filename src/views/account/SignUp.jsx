@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { auth, db } from '../firebase';
+import { auth, db } from '../../firebase';
 
 const INITIAL_STATE = {
 	userName: '',

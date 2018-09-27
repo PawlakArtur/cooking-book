@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { auth, store } from '../firebase';
-import { withAuthorization } from '../components';
+import { auth, store } from '../../firebase';
+import { withAuthorization } from '../../components';
 import { Link } from 'react-router-dom';
 
 const INITIAL_STATE = {

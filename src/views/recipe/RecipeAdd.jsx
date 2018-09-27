@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { auth, store } from '../firebase';
-import { withAuthorization } from '../components';
+import { auth, store } from '../../firebase';
+import { withAuthorization } from '../../components';
 
 const INITIAL_STATE = {
 	name: '',
