@@ -27,6 +27,7 @@ class RecipeAdd extends Component {
 		this.handleInput = this.handleInput.bind(this);
 		this.handleMultipleSelect = this.handleMultipleSelect.bind(this);
 		this.handleStepInputs = this.handleStepInputs.bind(this);
+		this.addNewStep = this.addNewStep.bind(this);
 	}
 
 	componentDidMount() {
@@ -84,6 +85,10 @@ class RecipeAdd extends Component {
 		});
 	}
 
+	addNewStep() {
+		this.setState(prevState => ({ recipeSteps: [ ...prevState.recipeSteps, '' ] }));
+	}
+
 	render() {
 		const { name, recipeIntroduction, recipeSteps, categoryID, executionTime, sourceLink, products, error, allCategories, allProducts } = this.state;
 		const isInvalid = name === '' || categoryID === '';
@@ -137,6 +142,11 @@ class RecipeAdd extends Component {
 							placeholder={`Step ${index + 1}`}
 							name="step"/>
 					)}
+					<button
+						type="button"
+						onClick={this.addNewStep}>
+						Add new step
+					</button>
 					<input
 						type="text"
 						onChange={this.handleInput}
