@@ -12,8 +12,8 @@ export const getRecipe = (uid, recipeID) =>
 export const getAllProducts = () =>
 	db.ref('products').once('value');
 
-export const doCreateProduct = productName =>
-	db.ref('products').push(productName);
+export const doCreateProduct = product =>
+	db.ref('products').push(product);
 
 export const getAllCategories = () =>
 	db.ref('categories').once('value');

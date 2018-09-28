@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget, Account, Home } from './views';
+import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget, Account, Home, ProductAdd } from './views';
 import { Navigation, withAuthentication } from './components';
 
 const App = () =>
@@ -16,6 +16,7 @@ const App = () =>
 			<Route path="/resetPassword" component={PasswordForget}/>
 			<Route path="/account" component={Account}/>
 			<Route path="/home" component={Home}/>
+			<Route path="/productAdd" component={ProductAdd}></Route>
 		</div>
 	</Router>;
 
