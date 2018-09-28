@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget, Account, Home, ProductAdd, ProductList } from './views';
+import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget, Account, Home, ProductAdd, ProductList, CategoryAdd } from './views';
 import { Navigation, withAuthentication } from './components';
 
 const App = () =>
@@ -18,6 +18,7 @@ const App = () =>
 			<Route path="/home" component={Home}/>
 			<Route path="/productAdd" component={ProductAdd}></Route>
 			<Route path="/productList" component={ProductList}></Route>
+			<Route path="/categoryAdd" component={CategoryAdd}></Route>
 		</div>
 	</Router>;
 
