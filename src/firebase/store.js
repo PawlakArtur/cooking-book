@@ -18,5 +18,5 @@ export const doCreateProduct = product =>
 export const getAllCategories = () =>
 	db.ref('categories').once('value');
 
-export const doCreateCategory = categoryName =>
-	db.ref('categories').push(categoryName);
+export const doCreateCategory = category =>
+	db.ref('categories').push(category);

@@ -18,6 +18,7 @@ const NavigationAuth = () =>
 	<ul>
 		<li><Link to="/home">Home</Link></li>
 		<li><Link to="/productAdd">productAdd</Link></li>
+		<li><Link to="/productList">productList</Link></li>
 		<li><Link to="/recipeAdd">recipeAdd</Link></li>
 		<li><Link to="/recipesList">recipesList</Link></li>
 		<li><Link to="/account">account</Link></li>

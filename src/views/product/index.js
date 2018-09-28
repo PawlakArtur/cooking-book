@@ -1,5 +1,7 @@
 import ProductAdd from './ProductAdd';
+import ProductList from './ProductList';
 
 export {
-	ProductAdd
+	ProductAdd,
+	ProductList
 };

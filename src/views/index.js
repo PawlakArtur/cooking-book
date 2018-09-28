@@ -1,6 +1,6 @@
 import { RecipeAdd, RecipesList, RecipeDetails } from './recipe';
 import { SignUp, SignIn, PasswordForget, PasswordChange, Account } from './account';
-import { ProductAdd } from './product';
+import { ProductAdd, ProductList } from './product';
 import Home from './Home';
 
 export {
@@ -13,5 +13,6 @@ export {
 	PasswordChange,
 	Account,
 	Home,
-	ProductAdd
+	ProductAdd,
+	ProductList
 };
