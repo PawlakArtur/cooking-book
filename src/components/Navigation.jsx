@@ -20,6 +20,7 @@ const NavigationAuth = () =>
 		<li><Link to="/productAdd">productAdd</Link></li>
 		<li><Link to="/productList">productList</Link></li>
 		<li><Link to="/categoryAdd">categoryAdd</Link></li>
+		<li><Link to="/categoryList">categoryList</Link></li>
 		<li><Link to="/recipeAdd">recipeAdd</Link></li>
 		<li><Link to="/recipesList">recipesList</Link></li>
 		<li><Link to="/account">account</Link></li>
