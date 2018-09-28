@@ -34,7 +34,7 @@ class RecipeAdd extends Component {
 		store.getAllCategories()
 			.then(snapshot => {
 				this.setState({
-					allCategories: Object.keys(snapshot.val()).map(key => ({ id: key, name: snapshot.val()[key] }))
+					allCategories: Object.keys(snapshot.val()).map(key => ({ id: key, name: snapshot.val()[key].name }))
 				});
 			}).catch(error => {
 				this.setState({ error });
@@ -42,7 +42,7 @@ class RecipeAdd extends Component {
 		store.getAllProducts()
 			.then(snapshot => {
 				this.setState({
-					allProducts: Object.keys(snapshot.val()).map(key => ({ id: key, name: snapshot.val()[key] }))
+					allProducts: Object.keys(snapshot.val()).map(key => ({ id: key, name: snapshot.val()[key].name }))
 				});
 			})
 			.catch(error => {
