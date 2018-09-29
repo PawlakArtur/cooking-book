@@ -4,8 +4,8 @@ import { withAuthorization } from '../../components';
 
 const INITIAL_STATE = {
 	name: '',
-	recipeIntroduction: '',
-	recipeSteps: [ '' ],
+	introduction: '',
+	steps: [ '' ],
 	categoryName: '',
 	categoryID: '',
 	executionTime: '',
@@ -51,11 +51,11 @@ class RecipeAdd extends Component {
 	}
 
 	onSubmit(e) {
-		const { recomended, numberOfEntries, name, recipeIntroduction, recipeSteps, categoryID, executionTime, sourceLink, products } = this.state;
+		const { recomended, numberOfEntries, name, introduction, steps, categoryID, executionTime, sourceLink, products } = this.state;
 		const currentUserUID = auth.getCurrentUserUID();
 		const addDate = new Date();
 		store.doCreateNewRecipe(currentUserUID, {
-			recomended, numberOfEntries, name, recipeIntroduction, recipeSteps, categoryID, executionTime, sourceLink, products, addDate, author: currentUserUID
+			recomended, numberOfEntries, name, introduction, steps, categoryID, executionTime, sourceLink, products, addDate, author: currentUserUID
 		})
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
@@ -78,19 +78,19 @@ class RecipeAdd extends Component {
 	handleStepInputs(index, e) {
 		const recipeStep = e.target.value;
 		this.setState(prevState => {
-			prevState.recipeSteps[index] = recipeStep;
+			prevState.steps[index] = recipeStep;
 			return {
-				recipeSteps: prevState.recipeSteps
+				steps: prevState.steps
 			};
 		});
 	}
 
 	addNewStep() {
-		this.setState(prevState => ({ recipeSteps: [ ...prevState.recipeSteps, '' ]}));
+		this.setState(prevState => ({ steps: [ ...prevState.steps, '' ]}));
 	}
 
 	render() {
-		const { name, recipeIntroduction, recipeSteps, categoryID, executionTime, sourceLink, products, error, allCategories, allProducts } = this.state;
+		const { name, introduction, steps, categoryID, executionTime, sourceLink, products, error, allCategories, allProducts } = this.state;
 		const isInvalid = name === '' || categoryID === '';
 		return (
 			<div>
@@ -131,14 +131,14 @@ class RecipeAdd extends Component {
 						name="executionTime"/>
 					<textarea
 						onChange={this.handleInput}
-						value={recipeIntroduction}
+						value={introduction}
 						placeholder="Recipe introduction"
-						name="recipeIntroduction"/>
-					{ recipeSteps.map((step, index) =>
+						name="introduction"/>
+					{ steps.map((step, index) =>
 						<textarea
 							key={`step-${index}`}
 							onChange={this.handleStepInputs.bind(this, index)}
-							value={recipeSteps[index]}
+							value={steps[index]}
 							placeholder={`Step ${index + 1}`}
 							name="step"/>
 					)}
