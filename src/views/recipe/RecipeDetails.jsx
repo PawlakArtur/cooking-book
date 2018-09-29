@@ -28,11 +28,29 @@ class RecipeDetails extends Component {
 	}
 
 	render() {
-		const { recipe } = this.state;
+		const { recipe: { categoryID, executionTime, name, numberOfEntries, products, introduction, steps, recomended, sourceLink }} = this.state;
 		return (
 			<div>
-				<Link to="/recipesList">Back to list</Link>
-				<h1>Recipe name: {recipe && recipe.name}</h1>
+				<div>
+					<Link to="/recipesList">Back to list</Link>
+				</div>
+				<h1>Recipe name: {name}</h1>
+				<p>{executionTime}</p>
+				<p>{categoryID}</p>
+				<p>{numberOfEntries}</p>
+				<p>{recomended}</p>
+				<p>{sourceLink}</p>
+				<ul>
+					{products && products.map((product, index) =>
+						<li key={`product-${index}`}>{product}</li>
+					)}
+				</ul>
+				<p>{introduction}</p>
+				<ul>
+					{steps && steps.map((step, index) =>
+						<li key={`step-${index}`}>{step}</li>
+					)}
+				</ul>
 			</div>
 		);
 	}
