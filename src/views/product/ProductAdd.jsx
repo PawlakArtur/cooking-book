@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 	error: null
 };
 
-class productAdd extends Component {
+class ProductAdd extends Component {
 	constructor() {
 		super();
 		this.state = { ...INITIAL_STATE };
@@ -59,4 +59,4 @@ class productAdd extends Component {
 
 const authCondition = authUser => Boolean(authUser);
 
-export default withAuthorization(authCondition)(productAdd);
+export default withAuthorization(authCondition)(ProductAdd);
