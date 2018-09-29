@@ -1,13 +1,15 @@
 import SignOutButton from './SignOutButton';
 import Navigation from './Navigation';
-import withAuthentication from './withAuthentication';
+import extendedProvider from './extendedProvider';
 import AuthUserContext from './AuthUserContext';
+import DataContext from './DataContext';
 import withAuthorization from './withAuthorization';
 
 export {
 	SignOutButton,
 	Navigation,
-	withAuthentication,
+	extendedProvider,
 	AuthUserContext,
+	DataContext,
 	withAuthorization
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget, Account, Home, ProductAdd, ProductList, CategoryAdd, CategoryList } from './views';
-import { Navigation, withAuthentication } from './components';
+import { Navigation, extendedProvider } from './components';
 
 const App = () =>
 	<Router>
@@ -23,4 +23,4 @@ const App = () =>
 		</React.Fragment>
 	</Router>;
 
-export default withAuthentication(App);
+export default extendedProvider(App);
