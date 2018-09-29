@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { auth, store } from '../../firebase';
 import { withAuthorization } from '../../components';
 
@@ -14,9 +15,7 @@ const INITIAL_STATE = {
 	sourceLink: '',
 	products: [],
 	error: null,
-	author: '',
-	allCategories: [],
-	allProducts: []
+	author: ''
 };
 
 class RecipeAdd extends Component {
@@ -28,26 +27,6 @@ class RecipeAdd extends Component {
 		this.handleMultipleSelect = this.handleMultipleSelect.bind(this);
 		this.handleStepInputs = this.handleStepInputs.bind(this);
 		this.addNewStep = this.addNewStep.bind(this);
-	}
-
-	componentDidMount() {
-		store.getAllCategories()
-			.then(snapshot => {
-				this.setState({
-					allCategories: Object.keys(snapshot.val()).map(key => ({ id: key, name: snapshot.val()[key].name }))
-				});
-			}).catch(error => {
-				this.setState({ error });
-			});
-		store.getAllProducts()
-			.then(snapshot => {
-				this.setState({
-					allProducts: Object.keys(snapshot.val()).map(key => ({ id: key, name: snapshot.val()[key].name }))
-				});
-			})
-			.catch(error => {
-				this.setState({ error });
-			});
 	}
 
 	onSubmit(e) {
@@ -90,7 +69,8 @@ class RecipeAdd extends Component {
 	}
 
 	render() {
-		const { name, introduction, steps, categoryID, executionTime, sourceLink, products, error, allCategories, allProducts } = this.state;
+		const { name, introduction, steps, categoryID, executionTime, sourceLink, products, error } = this.state;
+		const { categoryList, productList } = this.props;
 		const isInvalid = name === '' || categoryID === '';
 		return (
 			<div>
@@ -108,7 +88,7 @@ class RecipeAdd extends Component {
 						placeholder="Recipe category"
 						name="categoryID">
 						<option>--Please choose an option--</option>
-						{ allCategories.map(category =>
+						{ categoryList.map(category =>
 							<option key={category.id} value={category.id}>{category.name}</option>
 						)}
 					</select>
@@ -119,7 +99,7 @@ class RecipeAdd extends Component {
 						name="products"
 						multiple>
 						<option>--Please choose an options--</option>
-						{ allProducts.map(product =>
+						{ productList.map(product =>
 							<option key={product.id} value={product.id}>{product.name}</option>
 						)}
 					</select>
@@ -168,3 +148,8 @@ class RecipeAdd extends Component {
 const authCondition = authUser => Boolean(authUser);
 
 export default withAuthorization(authCondition)(RecipeAdd);
+
+RecipeAdd.propTypes = {
+	categoryList: PropTypes.array,
+	productList: PropTypes.array
+};

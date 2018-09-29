@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import AuthUserContext from './AuthUserContext';
+import DataContext from './DataContext';
 import { firebase } from '../firebase';
 
 const withAuthorization = authCondition => Component => {
@@ -17,7 +18,12 @@ const withAuthorization = authCondition => Component => {
 		render() {
 			return (
 				<AuthUserContext.Consumer>
-					{ authUser => authUser ? <Component {...this.props}/> : null}
+					{ authUser => authUser
+						? <DataContext.Consumer>
+							{ ({ productList, categoryList }) => <Component {...this.props} productList={productList} categoryList={categoryList}/> }
+						</DataContext.Consumer>
+						: null
+					}
 				</AuthUserContext.Consumer>
 			);
 		}
