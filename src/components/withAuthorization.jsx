@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import AuthUserContext from './AuthUserContext';
 import { firebase } from '../firebase';
@@ -21,6 +22,12 @@ const withAuthorization = authCondition => Component => {
 			);
 		}
 	}
+
+	WithAuthorization.propTypes = {
+		history: PropTypes.shape({
+			push: PropTypes.func
+		})
+	};
 
 	return withRouter(WithAuthorization);
 };

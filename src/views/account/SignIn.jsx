@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { auth } from '../../firebase';
 
@@ -68,3 +69,7 @@ class SignIn extends Component {
 }
 
 export default withRouter(SignIn);
+
+SignIn.propTypes = {
+	history: PropTypes.object
+};

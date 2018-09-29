@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { auth, store } from '../../firebase';
 import { withAuthorization } from '../../components';
 import { Link } from 'react-router-dom';
@@ -40,3 +41,11 @@ class RecipeDetails extends Component {
 const authCondition = authUser => Boolean(authUser);
 
 export default withAuthorization(authCondition)(RecipeDetails);
+
+RecipeDetails.propTypes = {
+	match: PropTypes.shape({
+		params: PropTypes.shape({
+			recipeID: PropTypes.string
+		})
+	})
+};

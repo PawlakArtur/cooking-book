@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withAuthorization } from '../components';
 import { db } from '../firebase';
 
@@ -36,6 +37,10 @@ const UserList = ({ users }) =>
 			<div key={key}>{users[key].username}</div>
 		)}
 	</div>;
+
+UserList.propTypes = {
+	users: PropTypes.object
+};
 
 const authCondition = authUser => Boolean(authUser);
 
