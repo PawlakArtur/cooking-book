@@ -6,7 +6,7 @@ import { Navigation, withAuthentication } from './components';
 
 const App = () =>
 	<Router>
-		<div>
+		<React.Fragment>
 			<Navigation/>
 			<Route path="/recipeAdd" component={RecipeAdd}/>
 			<Route path="/recipeDetails/:recipeID" component={RecipeDetails}/>
@@ -20,7 +20,7 @@ const App = () =>
 			<Route path="/productList" component={ProductList}></Route>
 			<Route path="/categoryAdd" component={CategoryAdd}></Route>
 			<Route path="/categoryList" component={CategoryList}></Route>
-		</div>
+		</React.Fragment>
 	</Router>;
 
 export default withAuthentication(App);
