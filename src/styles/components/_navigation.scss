@@ -1,0 +1,19 @@
+nav {
+	background: $secondary_color;
+}
+
+.navigation__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.list__element {
+	display: inline-block;
+	margin: 5px 15px 5px 0;
+}
+
+.element__link {
+	text-decoration: none;
+	color: $font_main_color;
+}
