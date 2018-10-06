@@ -4,6 +4,8 @@ import extendedProvider from './extendedProvider';
 import AuthUserContext from './AuthUserContext';
 import DataContext from './DataContext';
 import withAuthorization from './withAuthorization';
+import RecipeList from './RecipeList';
+import RecipeElement from './RecipeElement';
 
 export {
 	SignOutButton,
@@ -11,5 +13,7 @@ export {
 	extendedProvider,
 	AuthUserContext,
 	DataContext,
-	withAuthorization
+	withAuthorization,
+	RecipeList,
+	RecipeElement
 };
