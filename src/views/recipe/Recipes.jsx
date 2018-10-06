@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 	error: null
 };
 
-class RecipesList extends Component {
+class Recipes extends Component {
 	constructor() {
 		super();
 		this.state = { ...INITIAL_STATE };
@@ -33,8 +33,8 @@ class RecipesList extends Component {
 	render() {
 		const { error, recipes } = this.state;
 		return (
-			<div>
-				<h1>Recipes list:</h1>
+			<section>
+				<h1 className="section__header">Recipes list:</h1>
 				<ul>
 					{recipes.map((recipe, index) =>
 						<li key={index}>
@@ -43,11 +43,11 @@ class RecipesList extends Component {
 					)}
 				</ul>
 				{ error && <p>{error.message}</p>}
-			</div>
+			</section>
 		);
 	}
 }
 
 const authCondition = authUser => Boolean(authUser);
 
-export default withAuthorization(authCondition)(RecipesList);
+export default withAuthorization(authCondition)(Recipes);

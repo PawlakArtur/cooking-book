@@ -32,7 +32,7 @@ class RecipeDetails extends Component {
 		return (
 			<div>
 				<div>
-					<Link to="/recipesList">Back to list</Link>
+					<Link to="/recipes">Back to list</Link>
 				</div>
 				<h1>Recipe name: {name}</h1>
 				<p>{executionTime}</p>

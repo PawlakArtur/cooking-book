@@ -24,7 +24,7 @@ class SignIn extends Component {
 		auth.doSignInWithEmailAndPassword(email, password)
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
-				history.push('/recipesList');
+				history.push('/recipes');
 			})
 			.catch(error => {
 				this.setState({ error: error });

@@ -22,7 +22,7 @@ const NavigationAuth = () =>
 		<li className="list__element"><Link className="element__link" to="/categoryAdd">categoryAdd</Link></li>
 		<li className="list__element"><Link className="element__link" to="/categoryList">categoryList</Link></li>
 		<li className="list__element"><Link className="element__link" to="/recipeAdd">recipeAdd</Link></li>
-		<li className="list__element"><Link className="element__link" to="/recipesList">recipesList</Link></li>
+		<li className="list__element"><Link className="element__link" to="/recipes">recipes</Link></li>
 		<li className="list__element"><Link className="element__link" to="/account">account</Link></li>
 		<li className="list__element"><SignOutButton/></li>
 	</ul>;

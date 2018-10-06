@@ -1,9 +1,9 @@
 import RecipeAdd from './RecipeAdd';
 import RecipeDetails from './RecipeDetails';
-import RecipesList from './RecipesList';
+import Recipes from './Recipes';
 
 export {
 	RecipeAdd,
 	RecipeDetails,
-	RecipesList
+	Recipes
 };

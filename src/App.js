@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget, Account, Home, ProductAdd, ProductList, CategoryAdd, CategoryList } from './views';
+import { RecipeAdd, RecipeDetails, Recipes, SignUp, SignIn, PasswordForget, Account, Home, ProductAdd, ProductList, CategoryAdd, CategoryList } from './views';
 import { Navigation, extendedProvider } from './components';
 
 const App = () =>
@@ -9,7 +9,7 @@ const App = () =>
 			<Navigation/>
 			<Route path="/recipeAdd" component={RecipeAdd}/>
 			<Route path="/recipeDetails/:recipeID" component={RecipeDetails}/>
-			<Route path="/recipesList" component={RecipesList}/>
+			<Route path="/recipes" component={Recipes}/>
 			<Route path="/signUp" component={SignUp}/>
 			<Route path="/signIn" component={SignIn}/>
 			<Route path="/resetPassword" component={PasswordForget}/>
