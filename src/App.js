@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { RecipeAdd, RecipeDetails, RecipesList, SignUp, SignIn, PasswordForget, Account, Home, ProductAdd, ProductList, CategoryAdd, CategoryList } from './views';
 import { Navigation, extendedProvider } from './components';
