@@ -18,7 +18,7 @@ class RecipeDetails extends Component {
 	componentDidMount() {
 		const currentUserUID = auth.getCurrentUserUID();
 		const { match: { params: { recipeID }}} = this.props;
-		store.getRecipe(currentUserUID, recipeID)
+		store.getResource(`recipes/${currentUserUID}/${recipeID}`)
 			.then(snapshot => {
 				this.setState({ recipe: snapshot.val() });
 			})

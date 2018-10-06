@@ -18,7 +18,7 @@ class CategoryAdd extends Component {
 
 	onSubmit(e) {
 		const { name } = this.state;
-		store.doCreateCategory({ name })
+		store.doCreateNewResource('categories', { name })
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
 			})

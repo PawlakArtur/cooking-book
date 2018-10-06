@@ -16,7 +16,7 @@ class RecipesList extends Component {
 
 	componentDidMount() {
 		const currentUserUID = auth.getCurrentUserUID();
-		store.getRecipes(currentUserUID)
+		store.getResource(`recipes/${currentUserUID}`)
 			.then(snapshot => {
 				const recipes = [];
 				Object.keys(snapshot.val()).forEach(recipeID => {

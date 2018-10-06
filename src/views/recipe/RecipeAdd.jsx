@@ -33,7 +33,7 @@ class RecipeAdd extends Component {
 		const { recomended, numberOfEntries, name, introduction, steps, categoryID, executionTime, sourceLink, products } = this.state;
 		const currentUserUID = auth.getCurrentUserUID();
 		const addDate = new Date();
-		store.doCreateNewRecipe(currentUserUID, {
+		store.doCreateNewResource(`recipes/${currentUserUID}`, {
 			recomended, numberOfEntries, name, introduction, steps, categoryID, executionTime, sourceLink, products, addDate, author: currentUserUID
 		})
 			.then(() => {

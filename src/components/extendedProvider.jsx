@@ -21,14 +21,14 @@ const extendedProvider = Component => {
 					: this.setState({ authUser: null });
 			});
 
-			store.listenForProducts(snapshot => {
+			store.listenForResource('products', snapshot => {
 				const productsKeys = Object.keys(snapshot.val());
 				const productsMap = snapshot.val();
 				const productList = productsKeys.map(productID => Object.assign(productsMap[productID], { id: productID }));
 				this.setState({ productList });
 			});
 
-			store.listenForCategories(snapshot => {
+			store.listenForResource('categories', snapshot => {
 				const categoriesKeys = Object.keys(snapshot.val());
 				const categoriesMap = snapshot.val();
 				const categoryList = categoriesKeys.map(productID => Object.assign(categoriesMap[productID], { id: productID }));

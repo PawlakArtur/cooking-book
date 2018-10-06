@@ -18,7 +18,7 @@ class ProductAdd extends Component {
 
 	onSubmit(e) {
 		const { name } = this.state;
-		store.doCreateProduct({ name })
+		store.doCreateNewResource('products', { name })
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
 			})
