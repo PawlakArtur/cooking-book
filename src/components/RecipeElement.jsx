@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const RecipeElement = props =>
-	<li className="list__element">
-		<Link to={`/recipeDetails/${props.recipe.recipeID}`}>{props.recipe.name}</Link>
+	<li className="recipe__element">
+		<Link className="recipe__link" to={`/recipeDetails/${props.recipe.recipeID}`}>{props.recipe.name}</Link>
 	</li>;
 
 export default RecipeElement;

@@ -3,9 +3,9 @@ import RecipeElement from './RecipeElement';
 import PropTypes from 'prop-types';
 
 const RecipeList = props =>
-	<ul className="recipes__list">
+	<ul className="recipe__list">
 		{props.recipes.map((recipe, index) =>
-			<RecipeElement key={`reciple-${index}`} recipe/>
+			<RecipeElement key={`reciple-${index}`} recipe={recipe}/>
 		)}
 	</ul>;
 
