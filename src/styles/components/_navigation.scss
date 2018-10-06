@@ -8,12 +8,12 @@ nav {
 	list-style: none;
 }
 
-.list__element {
+.navigation__element {
 	display: inline-block;
 	margin: 5px 15px 5px 0;
 }
 
-.element__link {
+.navigation__link {
 	text-decoration: none;
 	color: $font_main_color;
 }
