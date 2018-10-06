@@ -1,0 +1,14 @@
+.recipe__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.recipe__element {
+	display: inline-block;
+	
+}
+.recipe__link {
+	color: $font_main_color;
+	text-decoration: none;
+}
