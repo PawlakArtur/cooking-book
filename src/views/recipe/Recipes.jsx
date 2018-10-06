@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { auth, store } from '../../firebase';
-import { withAuthorization } from '../../components';
-import { Link } from 'react-router-dom';
+import { withAuthorization, RecipeList } from '../../components';
 
 const INITIAL_STATE = {
 	recipes: [],
@@ -35,13 +34,7 @@ class Recipes extends Component {
 		return (
 			<section>
 				<h1 className="section__header">Recipes list:</h1>
-				<ul>
-					{recipes.map((recipe, index) =>
-						<li key={index}>
-							<Link to={`/recipeDetails/${recipe.recipeID}`}>{recipe.name}</Link>
-						</li>
-					)}
-				</ul>
+				<RecipeList recipes={recipes}/>
 				{ error && <p>{error.message}</p>}
 			</section>
 		);
