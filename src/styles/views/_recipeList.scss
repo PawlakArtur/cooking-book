@@ -1,7 +1,7 @@
 .recipe__list {
 	list-style: none;
 	margin: 0;
-	padding: 0 40px;
+	padding: 0;
 }
 
 .recipe__element {
@@ -9,13 +9,30 @@
 	background: linear-gradient(to right, #596488, #465074);
 	border-radius: 10px;
 	width: 100%;
-	padding: 10px;
 	margin-bottom: 15px;
+	overflow: hidden;
 }
 
 .recipe__link {
 	color: $font_main_color;
 	text-decoration: none;
+}
+
+.recipe__image {
+	display: inline-block;
+	vertical-align: top;
+	height: 100px;
+	img {
+		width: 99px;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.recipe__information {
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
 }
 
 .recipe__title, .recipe__executionTime, .recipe__category {
