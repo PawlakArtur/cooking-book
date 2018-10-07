@@ -17,11 +17,8 @@ const Navigation = () =>
 const NavigationAuth = () =>
 	<ul className="navigation__list">
 		<li className="navigation__element"><Link className="navigation__link" to="/home">Home</Link></li>
-		<li className="navigation__element"><Link className="navigation__link" to="/productAdd">productAdd</Link></li>
 		<li className="navigation__element"><Link className="navigation__link" to="/productList">productList</Link></li>
-		<li className="navigation__element"><Link className="navigation__link" to="/categoryAdd">categoryAdd</Link></li>
 		<li className="navigation__element"><Link className="navigation__link" to="/categoryList">categoryList</Link></li>
-		<li className="navigation__element"><Link className="navigation__link" to="/recipeAdd">recipeAdd</Link></li>
 		<li className="navigation__element"><Link className="navigation__link" to="/recipes">recipes</Link></li>
 		<li className="navigation__element"><Link className="navigation__link" to="/account">account</Link></li>
 		<li className="navigation__element"><SignOutButton/></li>
