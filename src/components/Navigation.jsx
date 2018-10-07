@@ -28,10 +28,10 @@ const NavigationAuth = () =>
 	</ul>;
 
 const NavigationNonAuth = () =>
-	<ul>
-		<li><Link to="/">Home</Link></li>
-		<li><Link to="/signUp">SignUp</Link></li>
-		<li><Link to="/signIn">SignIn</Link></li>
+	<ul className="navigation__list">
+		<li className="navigation__element"><Link className="navigation__link" to="/">Home</Link></li>
+		<li className="navigation__element"><Link className="navigation__link" to="/signUp">SignUp</Link></li>
+		<li className="navigation__element"><Link className="navigation__link" to="/signIn">SignIn</Link></li>
 	</ul>;
 
 export default Navigation;
