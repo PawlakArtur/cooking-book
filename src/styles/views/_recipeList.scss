@@ -1,14 +1,35 @@
 .recipe__list {
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 0 40px;
 }
 
 .recipe__element {
 	display: inline-block;
-	
+	background: linear-gradient(to right, #596488, #465074);
+	border-radius: 10px;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 15px;
 }
+
 .recipe__link {
 	color: $font_main_color;
 	text-decoration: none;
+}
+
+.recipe__title, .recipe__executionTime, .recipe__category {
+	margin: 0;
+}
+
+.recipe__title {
+	margin-bottom: 10px;
+}
+
+.recipe__executionTime {
+	margin-bottom: 5px;
+}
+
+.recipe__executionTime, .recipe__category {
+	color: $font_secondary_color;
 }
