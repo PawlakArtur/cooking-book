@@ -32,7 +32,7 @@ class Recipes extends Component {
 	render() {
 		const { error, recipes } = this.state;
 		return (
-			<section>
+			<section className="section__container">
 				<h1 className="section__header">Recipes list:</h1>
 				<RecipeList recipes={recipes}/>
 				{ error && <p>{error.message}</p>}
