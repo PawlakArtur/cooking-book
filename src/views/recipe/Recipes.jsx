@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { auth, store } from '../../firebase';
-import { withAuthorization, RecipeList } from '../../components';
-import { Link } from 'react-router-dom';
+import { withAuthorization, RecipeList, Button } from '../../components';
 
 const INITIAL_STATE = {
 	recipes: [],
@@ -36,7 +35,12 @@ class Recipes extends Component {
 			<section className="section__container">
 				<h1 className="section__header">Recipes list:</h1>
 				<div className="section__buttons">
-					<Link role="button" className="link__button link__button--primary" to="/recipeAdd">Add recipe</Link>
+					<Button
+						cssClass="button__link--primary"
+						to="/recipeAdd"
+						linkButton>
+						Add recipe
+					</Button>
 				</div>
 				<RecipeList recipes={recipes}/>
 				{ error && <p>{error.message}</p>}
