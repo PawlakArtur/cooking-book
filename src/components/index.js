@@ -6,6 +6,7 @@ import DataContext from './DataContext';
 import withAuthorization from './withAuthorization';
 import RecipeList from './RecipeList';
 import RecipeElement from './RecipeElement';
+import Button from './Button';
 
 export {
 	SignOutButton,
@@ -15,5 +16,6 @@ export {
 	DataContext,
 	withAuthorization,
 	RecipeList,
-	RecipeElement
+	RecipeElement,
+	Button
 };
