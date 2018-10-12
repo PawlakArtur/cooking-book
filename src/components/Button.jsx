@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 const LinkButton = ({ children, cssClass, to }) =>
 	<Link
 		className={`button__link ${cssClass}`}
-		to={to}>
+		to={to}
+		role="button">
 		{children}
 	</Link>;
 
