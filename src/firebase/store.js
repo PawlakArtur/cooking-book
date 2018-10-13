@@ -8,3 +8,6 @@ export const getResource = path =>
 
 export const listenForResource = (path, updateValue) =>
 	db.ref(path).on('value', updateValue);
+
+export const removeResource = path =>
+	db.ref(path).remove();
