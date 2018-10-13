@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { auth, store } from '../../firebase';
 import { withAuthorization, RecipeList, Button } from '../../components';
+import { extractList } from '../../utils';
 
 const INITIAL_STATE = {
 	recipes: [],
@@ -14,19 +15,12 @@ class Recipes extends Component {
 	}
 
 	componentDidMount() {
+		const self = this;
 		const currentUserUID = auth.getCurrentUserUID();
-		store.getResource(`recipes/${currentUserUID}`)
-			.then(snapshot => {
-				const recipes = [];
-				Object.keys(snapshot.val()).forEach(recipeID => {
-					const recipe = Object.assign(snapshot.val()[recipeID], { recipeID: recipeID });
-					recipes.push(recipe);
-				});
-				this.setState({ recipes });
-			})
-			.catch(error => {
-				this.setState({ error });
-			});
+		store.listenForResource(`recipes/${currentUserUID}`, function getRecipes(snapshot) {
+			const recipes = extractList(snapshot);
+			self.setState({ recipes });
+		});
 	}
 
 	render() {
