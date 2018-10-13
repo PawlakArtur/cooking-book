@@ -11,3 +11,6 @@ export const listenForResource = (path, updateValue) =>
 
 export const removeResource = path =>
 	db.ref(path).remove();
+
+export const removeListener = path =>
+	db.ref(path).off('value');
