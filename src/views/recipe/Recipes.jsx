@@ -4,6 +4,7 @@ import { withAuthorization, RecipeList, Button } from '../../components';
 import { extractList } from '../../utils';
 
 const INITIAL_STATE = {
+	currentUserUID: null,
 	recipes: [],
 	error: null
 };
@@ -21,6 +22,11 @@ class Recipes extends Component {
 			const recipes = extractList(snapshot);
 			self.setState({ recipes });
 		});
+		self.setState({ currentUserUID });
+	}
+
+	componentWillUnmount() {
+		store.removeListener(`recipes/${this.state.currentUserUID}`);
 	}
 
 	render() {
