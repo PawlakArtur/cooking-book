@@ -39,9 +39,10 @@ class AccountSettings extends Component {
 
 	render() {
 		const { languages, userSettings: { language }} = this.state;
+		const { translate } = this.props;
 		return (
 			<section>
-				<h2>User settings:</h2>
+				<h2>{translate('views.userSettings')}:</h2>
 				<form onSubmit={this.onSubmit}>
 					<select
 						onChange={this.handleInput}
@@ -68,7 +69,8 @@ AccountSettings.propTypes = {
 		email: PropTypes.string,
 		username: PropTypes.string,
 		language: PropTypes.string
-	})
+	}),
+	translate: PropTypes.func
 };
 
 export default AccountSettings;
