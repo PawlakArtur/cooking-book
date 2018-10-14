@@ -2,7 +2,8 @@ import React from 'react';
 import { firebase, store } from '../firebase';
 import AuthUserContext from './AuthUserContext';
 import DataContext from './DataContext';
-import { extractList } from '../utils';
+import MethodsContext from './MethodsContext';
+import { extractList, translate } from '../utils';
 
 const extendedProvider = Component => {
 	class ExtendedProvider extends React.Component {
@@ -16,6 +17,7 @@ const extendedProvider = Component => {
 			};
 
 			this.setUserData = this.setUserData.bind(this);
+			this.getTranslate = this.getTranslate.bind(this);
 		}
 
 		componentDidMount() {
@@ -46,12 +48,19 @@ const extendedProvider = Component => {
 			}
 		}
 
+		getTranslate(path) {
+			const { userSettings: { language }} = this.state;
+			return translate(language, path);
+		}
+
 		render() {
 			const { authUser, productList, categoryList, userSettings } = this.state;
 			return (
 				<AuthUserContext.Provider value={authUser}>
 					<DataContext.Provider value={({ productList, categoryList, userSettings })}>
-						<Component/>
+						<MethodsContext.Provider value={({ translate: this.getTranslate })}>
+							<Component/>
+						</MethodsContext.Provider>
 					</DataContext.Provider>
 				</AuthUserContext.Provider>
 			);
