@@ -17,3 +17,6 @@ export const doPasswordUpdate = password =>
 
 export const getCurrentUserUID = () =>
 	auth.currentUser.uid;
+
+export const getCurrentUser = () =>
+	auth.currentUser;
