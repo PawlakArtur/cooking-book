@@ -20,7 +20,7 @@ const withAuthorization = authCondition => Component => {
 				<AuthUserContext.Consumer>
 					{ authUser => authUser
 						? <DataContext.Consumer>
-							{ ({ productList, categoryList }) => <Component {...this.props} productList={productList} categoryList={categoryList}/> }
+							{ ({ productList, categoryList, userSettings }) => <Component {...this.props} productList={productList} categoryList={categoryList} userSettings={userSettings}/> }
 						</DataContext.Consumer>
 						: null
 					}

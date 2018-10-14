@@ -11,16 +11,15 @@ const extendedProvider = Component => {
 			this.state = {
 				authUser: null,
 				productList: [],
-				categoryList: []
+				categoryList: [],
+				userSettings: {}
 			};
+
+			this.setUserData = this.setUserData.bind(this);
 		}
 
 		componentDidMount() {
-			firebase.auth.onAuthStateChanged(authUser => {
-				authUser
-					? this.setState({ authUser })
-					: this.setState({ authUser: null });
-			});
+			firebase.auth.onAuthStateChanged(this.setUserData);
 
 			store.listenForResource('products', snapshot => {
 				const productList = extractList(snapshot);
@@ -33,11 +32,25 @@ const extendedProvider = Component => {
 			});
 		}
 
+		setUserData(authUser) {
+			if (authUser) {
+				if (this.setState.authUser) {
+					store.removeListener(`users/${authUser.uid}`);
+				}
+				store.listenForResource(`users/${authUser.uid}`, snapshot => {
+					this.setState({ userSettings: snapshot.val() });
+				});
+				this.setState({ authUser });
+			} else {
+				this.setState({ authUser: null, userSettings: {}});
+			}
+		}
+
 		render() {
-			const { authUser, productList, categoryList } = this.state;
+			const { authUser, productList, categoryList, userSettings } = this.state;
 			return (
 				<AuthUserContext.Provider value={authUser}>
-					<DataContext.Provider value={({ productList, categoryList })}>
+					<DataContext.Provider value={({ productList, categoryList, userSettings })}>
 						<Component/>
 					</DataContext.Provider>
 				</AuthUserContext.Provider>
