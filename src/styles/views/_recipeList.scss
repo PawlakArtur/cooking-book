@@ -1,3 +1,6 @@
+$element_list_background_first: #596488;
+$element_list_background_second: #465074;
+
 .recipe__list {
 	list-style: none;
 	margin: 0;
@@ -5,12 +8,19 @@
 }
 
 .recipe__element {
+	margin-bottom: 15px;
+	font-size: 0;
+}
+
+.recipe__container {
+	font-size: 16px;
 	display: inline-block;
-	background: linear-gradient(to right, #596488, #465074);
+	background: linear-gradient(to right, $element_list_background_first, $element_list_background_second);
 	border-radius: 10px;
 	width: 100%;
-	margin-bottom: 15px;
 	overflow: hidden;
+	z-index: 10;
+	position: relative;
 }
 
 .recipe__link {
@@ -33,6 +43,15 @@
 	display: inline-block;
 	vertical-align: top;
 	padding: 10px;
+	width: 60%;
+}
+
+.recipe__buttons {
+	display: inline-flex;
+	width: 20%;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
 }
 
 .recipe__title, .recipe__executionTime, .recipe__category {
@@ -49,4 +68,42 @@
 
 .recipe__executionTime, .recipe__category {
 	color: $font_secondary_color;
+}
+
+.recipe__confirmation {
+	font-size: 16px;
+	width: 80%;
+	margin: 0 auto;
+	background: $element_list_background_first;
+	border-radius: 0 0 10px 10px;
+	padding: 5px 0 10px;
+	text-align: center;
+	transform-origin: top center;
+
+	.button__button {
+		margin-right: 5px;
+	}
+
+	&.recipe__confirmation-enter {
+		opacity: 0.01;
+		transform: scale(0.9) translateY(-50%);
+	} 
+	&.recipe__confirmation-enter-active {
+		opacity: 1;
+		transform: scale(1) translateY(0%);
+		transition: transform 300ms ease-out, opacity 300ms ease-out;
+	}
+	&.recipe__confirmation-exit {
+		opacity: 1;
+		transform: scale(1) translateY(0%);
+	}
+	&.recipe__confirmation-exit-active {
+		opacity: 0.01;
+		transform: scale(0.9) translateY(-50%);
+		transition: transform 300ms ease-out, opacity 300ms ease-out;
+	}
+}
+
+.confirmation__title {
+	margin: 0 0 5px;
 }
