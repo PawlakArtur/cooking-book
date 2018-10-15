@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { auth, store } from '../../firebase';
 import { withAuthorization, RecipeList, Button } from '../../components';
 import { extractList } from '../../utils';
+import PropTypes from 'prop-types';
 
 const INITIAL_STATE = {
 	currentUserUID: null,
@@ -31,6 +32,7 @@ class Recipes extends Component {
 
 	render() {
 		const { error, recipes } = this.state;
+		const { categoryList } = this.props;
 		return (
 			<section className="section__container">
 				<h1 className="section__header">Recipes list:</h1>
@@ -42,12 +44,16 @@ class Recipes extends Component {
 						Add recipe
 					</Button>
 				</div>
-				<RecipeList recipes={recipes}/>
+				<RecipeList recipes={recipes} categoryList={categoryList}/>
 				{ error && <p>{error.message}</p>}
 			</section>
 		);
 	}
 }
+
+Recipes.propTypes = {
+	categoryList: PropTypes.array
+};
 
 const authCondition = authUser => Boolean(authUser);
 
