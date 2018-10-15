@@ -14,6 +14,8 @@ class Recipes extends Component {
 	constructor() {
 		super();
 		this.state = { ...INITIAL_STATE };
+
+		this.removeRecipe = this.removeRecipe.bind(this);
 	}
 
 	componentDidMount() {
@@ -30,6 +32,10 @@ class Recipes extends Component {
 		store.removeListener(`recipes/${this.state.currentUserUID}`);
 	}
 
+	removeRecipe(recipeID) {
+		store.removeResource(`recipes/${this.state.currentUserUID}/${recipeID}`);
+	}
+
 	render() {
 		const { error, recipes } = this.state;
 		const { categoryList } = this.props;
@@ -44,7 +50,7 @@ class Recipes extends Component {
 						Add recipe
 					</Button>
 				</div>
-				<RecipeList recipes={recipes} categoryList={categoryList}/>
+				<RecipeList recipes={recipes} categoryList={categoryList} removeRecipe={this.removeRecipe}/>
 				{ error && <p>{error.message}</p>}
 			</section>
 		);
@@ -52,7 +58,7 @@ class Recipes extends Component {
 }
 
 Recipes.propTypes = {
-	categoryList: PropTypes.array
+	categoryList: PropTypes.array.isRequired
 };
 
 const authCondition = authUser => Boolean(authUser);
