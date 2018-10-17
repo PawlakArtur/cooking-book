@@ -19,27 +19,31 @@ class HomePage extends Component {
 
 	render() {
 		const { users } = this.state;
+		const { translate } = this.props;
 		return (
 			<div>
-				<h1>Home</h1>
-				<p>The Home Page is accessible by every signed in user.</p>
-				{ users && <UserList users={users}/> }
+				<h1>{translate('views.home')}</h1>
+				{ users && <UserList users={users} translate={translate}/> }
 			</div>
 		);
 	}
 }
 
-const UserList = ({ users }) =>
+HomePage.propTypes = {
+	translate: PropTypes.func.isRequired
+};
+
+const UserList = ({ users, translate }) =>
 	<div>
-		<h2>List of Usernames of Users</h2>
-		<p>(Saved on Sign Up in Firebase Database)</p>
+		<h2>{translate('views.listOfUsers')}</h2>
 		{Object.keys(users).map(key =>
 			<div key={key}>{users[key].username}</div>
 		)}
 	</div>;
 
 UserList.propTypes = {
-	users: PropTypes.object
+	users: PropTypes.object.isRequired,
+	translate: PropTypes.func.isRequired
 };
 
 const authCondition = authUser => Boolean(authUser);

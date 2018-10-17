@@ -4,10 +4,10 @@ import { withAuthorization } from '../../components';
 
 class ProductList extends Component {
 	render() {
-		const { productList } = this.props;
+		const { productList, translate } = this.props;
 		return (
 			<div>
-				<h1>Product list</h1>
+				<h1>{translate('views.productList')}</h1>
 				<ul>
 					{productList.map(product =>
 						<li key={product.id}>{product.name}</li>
@@ -23,5 +23,6 @@ const authCondition = authUser => Boolean(authUser);
 export default withAuthorization(authCondition)(ProductList);
 
 ProductList.propTypes = {
-	productList: PropTypes.array
+	productList: PropTypes.array.isRequired,
+	translate: PropTypes.func.isRequired
 };

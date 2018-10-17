@@ -38,19 +38,19 @@ class Recipes extends Component {
 
 	render() {
 		const { error, recipes } = this.state;
-		const { categoryList } = this.props;
+		const { categoryList, translate } = this.props;
 		return (
 			<section className="section__container">
-				<h1 className="section__header">Recipes list:</h1>
+				<h1 className="section__header">{translate('views.recipeList')}:</h1>
 				<div className="section__buttons">
 					<Button
 						cssClass="button__link--primary"
 						to="/recipeAdd"
 						linkButton>
-						Add recipe
+						{translate('views.addRecipe')}
 					</Button>
 				</div>
-				<RecipeList recipes={recipes} categoryList={categoryList} removeRecipe={this.removeRecipe}/>
+				<RecipeList recipes={recipes} categoryList={categoryList} removeRecipe={this.removeRecipe} translate={translate}/>
 				{ error && <p>{error.message}</p>}
 			</section>
 		);
@@ -58,7 +58,8 @@ class Recipes extends Component {
 }
 
 Recipes.propTypes = {
-	categoryList: PropTypes.array.isRequired
+	categoryList: PropTypes.array.isRequired,
+	translate: PropTypes.func.isRequired
 };
 
 const authCondition = authUser => Boolean(authUser);

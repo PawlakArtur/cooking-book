@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { store } from '../../firebase';
 import { withAuthorization } from '../../components';
+import PropTypes from 'prop-types';
 
 const INITIAL_STATE = {
 	name: '',
@@ -34,21 +35,22 @@ class CategoryAdd extends Component {
 
 	render() {
 		const { name, error } = this.state;
+		const { translate } = this.props;
 		const isInvalid = name === '';
 		return (
 			<div>
-				<h1>Add new cateogry</h1>
+				<h1>{translate('views.addNewCategory')}</h1>
 				<form onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={name}
-						placeholde="Category name"
+						placeholder={translate('views.categoryName')}
 						name="name"/>
 					<button
 						type="submit"
 						disabled={isInvalid}>
-						Add category
+						{translate('views.addCategory')}
 					</button>
 				</form>
 				{error && <p>{error.message}</p>}
@@ -56,6 +58,10 @@ class CategoryAdd extends Component {
 		);
 	}
 }
+
+CategoryAdd.propTypes = {
+	translate: PropTypes.func.isRequired
+};
 
 const authCondition = authUser => Boolean(authUser);
 

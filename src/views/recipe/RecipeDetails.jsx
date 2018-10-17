@@ -29,12 +29,13 @@ class RecipeDetails extends Component {
 
 	render() {
 		const { recipe: { categoryID, executionTime, name, numberOfEntries, products, introduction, steps, recomended, sourceLink }} = this.state;
+		const { translate } = this.props;
 		return (
 			<div>
 				<div>
-					<Link to="/recipes">Back to list</Link>
+					<Link to="/recipes">{translate('shared.backToList')}</Link>
 				</div>
-				<h1>Recipe name: {name}</h1>
+				<h1>{translate('views.recipe')}: {name}</h1>
 				<p>{executionTime}</p>
 				<p>{categoryID}</p>
 				<p>{numberOfEntries}</p>
@@ -65,5 +66,6 @@ RecipeDetails.propTypes = {
 		params: PropTypes.shape({
 			recipeID: PropTypes.string
 		})
-	})
+	}),
+	translate: PropTypes.func.isRequired
 };

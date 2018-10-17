@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase';
+import PropTypes from 'prop-types';
 
 const INITIAL_STATE = {
 	password: '',
@@ -36,27 +37,27 @@ class PasswordChange extends Component {
 	render() {
 		const { password, passwordConfirmation, error } = this.state;
 		const isInvalid = password !== passwordConfirmation || password === '';
-
+		const { translate } = this.props;
 		return (
 			<div>
-				<h1>Change password</h1>
+				<h1>{translate('views.changePassword')}</h1>
 				<form onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						value={password}
 						onChange={this.handleInput}
-						placeholder="New password"
+						placeholder={translate('views.newPassword')}
 						name="password"/>
 					<input
 						type="text"
 						value={passwordConfirmation}
 						onChange={this.handleInput}
-						placeholder="Confirm new password"
+						placeholder={translate('views.confirmNewPassword')}
 						name="passwordConfirmation"/>
 					<button
 						type="submit"
 						disabled={isInvalid}>
-                        Reset my password
+						{translate('shared.submit')}
 					</button>
 				</form>
 				{ error && <p>{error.message}</p> }
@@ -64,5 +65,9 @@ class PasswordChange extends Component {
 		);
 	}
 }
+
+PasswordChange.propTypes = {
+	translate: PropTypes.func.isRequired
+};
 
 export default PasswordChange;

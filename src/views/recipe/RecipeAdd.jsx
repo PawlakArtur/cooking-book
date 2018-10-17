@@ -70,24 +70,24 @@ class RecipeAdd extends Component {
 
 	render() {
 		const { name, introduction, steps, categoryID, executionTime, sourceLink, products, error } = this.state;
-		const { categoryList, productList } = this.props;
+		const { categoryList, productList, translate } = this.props;
 		const isInvalid = name === '' || categoryID === '';
 		return (
 			<div>
-				<h1>Add new recipe</h1>
+				<h1>{translate('views.addNewRecipe')}</h1>
 				<form onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={name}
-						placeholder="Recipe name"
+						placeholder={translate('views.recipeName')}
 						name="name"/>
 					<select
 						onChange={this.handleInput}
 						value={categoryID}
-						placeholder="Recipe category"
+						placeholder={translate('views.categoryName')}
 						name="categoryID">
-						<option>--Please choose an option--</option>
+						<option>--{translate('views.chooseCategory')}--</option>
 						{ categoryList.map(category =>
 							<option key={category.id} value={category.id}>{category.name}</option>
 						)}
@@ -96,9 +96,9 @@ class RecipeAdd extends Component {
 						onChange={this.handleMultipleSelect}
 						value={products}
 						placeholder="Recipe products"
-						name="products"
+						name={translate('views.productName')}
 						multiple>
-						<option>--Please choose an options--</option>
+						<option>--{translate('views.productName')}--</option>
 						{ productList.map(product =>
 							<option key={product.id} value={product.id}>{product.name}</option>
 						)}
@@ -107,36 +107,36 @@ class RecipeAdd extends Component {
 						type="number"
 						onChange={this.handleInput}
 						value={executionTime}
-						placeholder="Recipe execution time"
+						placeholder={translate('views.executionTime')}
 						name="executionTime"/>
 					<textarea
 						onChange={this.handleInput}
 						value={introduction}
-						placeholder="Recipe introduction"
+						placeholder={translate('views.recipeIntroduction')}
 						name="introduction"/>
 					{ steps.map((step, index) =>
 						<textarea
 							key={`step-${index}`}
 							onChange={this.handleStepInputs.bind(this, index)}
 							value={steps[index]}
-							placeholder={`Step ${index + 1}`}
+							placeholder={`${translate('views.step')} ${index + 1}`}
 							name="step"/>
 					)}
 					<button
 						type="button"
 						onClick={this.addNewStep}>
-						Add new step
+						{translate('views.addNewStep')}
 					</button>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={sourceLink}
-						placeholder="Recipe source link"
+						placeholder={translate('views.recipeSourceLink')}
 						name="sourceLink"/>
 					<button
 						type="submit"
 						disabled={isInvalid}>
-						Add recipe
+						{translate('views.addRecipe')}
 					</button>
 				</form>
 				{ error && <p>{error.message}</p> }
@@ -150,6 +150,7 @@ const authCondition = authUser => Boolean(authUser);
 export default withAuthorization(authCondition)(RecipeAdd);
 
 RecipeAdd.propTypes = {
-	categoryList: PropTypes.array,
-	productList: PropTypes.array
+	categoryList: PropTypes.array.isRequired,
+	productList: PropTypes.array.isRequired,
+	translate: PropTypes.func.isRequired
 };

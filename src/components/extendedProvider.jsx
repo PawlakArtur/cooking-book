@@ -49,7 +49,7 @@ const extendedProvider = Component => {
 		}
 
 		getTranslate(path) {
-			const { userSettings: { language }} = this.state;
+			const { userSettings: { language = 'pl' }} = this.state;
 			return translate(language, path);
 		}
 

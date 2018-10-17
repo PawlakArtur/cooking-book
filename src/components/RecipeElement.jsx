@@ -27,7 +27,7 @@ class RecipeElement extends Component {
 	}
 
 	render() {
-		const { recipe } = this.props;
+		const { recipe, translate } = this.props;
 		const { showRemoveButtons } = this.state;
 		const cateogryName = this.props.categoryList.find(cateogry => cateogry.id === recipe.categoryID).name;
 		return <li className="recipe__element">
@@ -35,13 +35,13 @@ class RecipeElement extends Component {
 				<div className="recipe__image"></div>
 				<div className="recipe__information">
 					<h2 className="recipe__title"><Link className="recipe__link" to={`/recipeDetails/${recipe.id}`}>{recipe.name}</Link></h2>
-					<p className="recipe__executionTime">Execution time: {recipe.executionTime}</p>
-					<p className="recipe__category">Category: {cateogryName}</p>
+					<p className="recipe__executionTime">{translate('views.executionTime')}: {recipe.executionTime}</p>
+					<p className="recipe__category">{translate('views.category')}: {cateogryName}</p>
 				</div>
 				<div className="recipe__buttons">
 					<Button
 						actionFunction={this.toggleConfirmationButtons.bind(this, true)}>
-						Delete
+						{translate('shared.remove')}
 					</Button>
 				</div>
 			</div>
@@ -51,14 +51,14 @@ class RecipeElement extends Component {
 				classNames="recipe__confirmation"
 				unmountOnExit>
 				<div className="recipe__confirmation">
-					<p className="confirmation__title">Remove element?</p>
+					<p className="confirmation__title">{translate('messages.removeElement')}</p>
 					<Button
 						actionFunction={this.toggleConfirmationButtons}>
-						No
+						{translate('shared.no')}
 					</Button>
 					<Button
 						actionFunction={this.handleRemoveRecipe.bind(this, recipe.id)}>
-						Yes
+						{translate('shared.yes')}
 					</Button>
 				</div>
 			</CSSTransition>
@@ -76,5 +76,6 @@ RecipeElement.propTypes = {
 		executionTime: PropTypes.string,
 		categoryID: PropTypes.string
 	}).isRequired,
-	removeRecipe: PropTypes.func.isRequired
+	removeRecipe: PropTypes.func.isRequired,
+	translate: PropTypes.func.isRequired
 };

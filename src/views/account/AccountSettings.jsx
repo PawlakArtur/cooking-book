@@ -47,16 +47,16 @@ class AccountSettings extends Component {
 					<select
 						onChange={this.handleInput}
 						value={language}
-						placeholder="User language"
+						placeholder={translate('views.userLanguage')}
 						name="language">
-						<option>--Please choose an language--</option>
+						<option>--{translate('views.chooseLanguage')}--</option>
 						{ languages.map((optionLanguage, index) =>
 							<option key={`language_${index}`} value={optionLanguage}>{optionLanguage}</option>
 						)}
 					</select>
 					<button
 						type="submit">
-						Change settings
+						{translate('shared.submit')}
 					</button>
 				</form>
 			</section>

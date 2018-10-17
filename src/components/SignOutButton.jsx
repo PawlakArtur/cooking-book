@@ -1,11 +1,16 @@
 import React from 'react';
 import { auth } from '../firebase';
+import PropTypes from 'prop-types';
 
-const SignOutButton = () =>
+const SignOutButton = ({ translate }) =>
 	<button
 		type="button"
 		onClick={auth.doSignOut}>
-        Sign out
+		{translate('components.signOut')}
 	</button>;
+
+SignOutButton.propTypes = {
+	translate: PropTypes.func.isRequired
+};
 
 export default SignOutButton;
