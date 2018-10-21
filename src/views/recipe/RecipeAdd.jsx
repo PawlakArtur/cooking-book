@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { auth, store } from '../../firebase';
-import { withAuthorization } from '../../components';
+import { withAuthorization, Button } from '../../components';
 
 const INITIAL_STATE = {
 	name: '',
@@ -73,9 +73,9 @@ class RecipeAdd extends Component {
 		const { categoryList, productList, translate } = this.props;
 		const isInvalid = name === '' || categoryID === '';
 		return (
-			<div>
-				<h1>{translate('views.addNewRecipe')}</h1>
-				<form onSubmit={this.onSubmit}>
+			<div className="layout__container layout__container--main">
+				<h1 className="layout__title">{translate('views.addNewRecipe')}</h1>
+				<form className="layout__main layout__container layout__container--form form__container" onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						onChange={this.handleInput}
@@ -113,31 +113,35 @@ class RecipeAdd extends Component {
 						onChange={this.handleInput}
 						value={introduction}
 						placeholder={translate('views.recipeIntroduction')}
-						name="introduction"/>
+						name="introduction"
+						className="layout__input--wide"/>
+					<Button
+						cssClass="layout__button"
+						disabled={isInvalid}
+						actionFunction={this.addNewStep}>
+						{translate('views.addNewStep')}
+					</Button>
 					{ steps.map((step, index) =>
 						<textarea
 							key={`step-${index}`}
 							onChange={this.handleStepInputs.bind(this, index)}
 							value={steps[index]}
 							placeholder={`${translate('views.step')} ${index + 1}`}
-							name="step"/>
+							name="step"
+							className="layout__input--wide"/>
 					)}
-					<button
-						type="button"
-						onClick={this.addNewStep}>
-						{translate('views.addNewStep')}
-					</button>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={sourceLink}
 						placeholder={translate('views.recipeSourceLink')}
 						name="sourceLink"/>
-					<button
+					<Button
 						type="submit"
+						cssClass="layout__button"
 						disabled={isInvalid}>
 						{translate('views.addRecipe')}
-					</button>
+					</Button>
 				</form>
 				{ error && <p>{error.message}</p> }
 			</div>
