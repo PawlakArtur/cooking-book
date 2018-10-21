@@ -3,7 +3,7 @@ import RecipeElement from './RecipeElement';
 import PropTypes from 'prop-types';
 
 const RecipeList = ({ categoryList, recipes, removeRecipe, translate }) =>
-	<ul className="recipe__list">
+	<ul className="recipe__list layout__main layout__container layout__container--list">
 		{recipes.map((recipe, index) =>
 			<RecipeElement key={`reciple-${index}`} recipe={recipe} categoryList={categoryList} removeRecipe={removeRecipe} translate={translate}/>
 		)}
