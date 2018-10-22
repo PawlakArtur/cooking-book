@@ -81,12 +81,14 @@ class RecipeAdd extends Component {
 						onChange={this.handleInput}
 						value={name}
 						placeholder={translate('views.recipeName')}
-						name="name"/>
+						name="name"
+						className="form__input"/>
 					<select
 						onChange={this.handleInput}
 						value={categoryID}
 						placeholder={translate('views.categoryName')}
-						name="categoryID">
+						name="categoryID"
+						className="form__input">
 						<option>--{translate('views.chooseCategory')}--</option>
 						{ categoryList.map(category =>
 							<option key={category.id} value={category.id}>{category.name}</option>
@@ -97,7 +99,8 @@ class RecipeAdd extends Component {
 						value={products}
 						placeholder="Recipe products"
 						name={translate('views.productName')}
-						multiple>
+						multiple
+						className="form__input">
 						<option>--{translate('views.productName')}--</option>
 						{ productList.map(product =>
 							<option key={product.id} value={product.id}>{product.name}</option>
@@ -108,13 +111,14 @@ class RecipeAdd extends Component {
 						onChange={this.handleInput}
 						value={executionTime}
 						placeholder={translate('views.executionTime')}
-						name="executionTime"/>
+						name="executionTime"
+						className="form__input"/>
 					<textarea
 						onChange={this.handleInput}
 						value={introduction}
 						placeholder={translate('views.recipeIntroduction')}
 						name="introduction"
-						className="layout__input--wide"/>
+						className="form__input layout__input--wide"/>
 					<Button
 						cssClass="layout__button"
 						disabled={isInvalid}
@@ -128,14 +132,15 @@ class RecipeAdd extends Component {
 							value={steps[index]}
 							placeholder={`${translate('views.step')} ${index + 1}`}
 							name="step"
-							className="layout__input--wide"/>
+							className="form__input layout__input--wide"/>
 					)}
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={sourceLink}
 						placeholder={translate('views.recipeSourceLink')}
-						name="sourceLink"/>
+						name="sourceLink"
+						className="form__input"/>
 					<Button
 						type="submit"
 						cssClass="layout__button"
