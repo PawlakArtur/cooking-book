@@ -1,0 +1,10 @@
+.form__input {
+	padding: 8px;
+	border-radius: 8px;
+	border: solid 1px transparent;
+	transition: box-shadow 200ms;
+	outline: 0;
+	&:focus {
+		box-shadow: 0 5px 20px -5px #000;
+	}
+}
