@@ -7,6 +7,7 @@ import withAuthorization from './withAuthorization';
 import RecipeList from './RecipeList';
 import RecipeElement from './RecipeElement';
 import Button from './Button';
+import withRouterWrapper from './withRouterWrapper';
 
 export {
 	SignOutButton,
@@ -17,5 +18,6 @@ export {
 	withAuthorization,
 	RecipeList,
 	RecipeElement,
-	Button
+	Button,
+	withRouterWrapper
 };
