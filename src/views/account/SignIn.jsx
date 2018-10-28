@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { auth } from '../../firebase';
+import { Button } from '../../components';
 
 const INITIAL_STATE = {
 	email: '',
@@ -41,26 +42,29 @@ class SignIn extends Component {
 		const { email, password, error } = this.state;
 		const isInvalid = email === '' || password === '';
 		return (
-			<div>
-				<h1>SignIn</h1>
-				<form onSubmit={this.onSubmit}>
+			<div className="layout__container layout__container--main">
+				<h1 className="layout__title">SignIn</h1>
+				<form className="layout__main layout__container layout__container--form form__container" onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={email}
 						placeholder="Email address"
-						name="email"/>
+						name="email"
+						className="form__input"/>
 					<input
 						type="password"
 						onChange={this.handleInput}
 						value={password}
 						placeholder="Password"
-						name="password"/>
-					<button
+						name="password"
+						className="form__input"/>
+					<Button
 						type="submit"
+						cssClass="layout__button"
 						disabled={isInvalid}>
                         Sign in
-					</button>
+					</Button>
 				</form>
 				{ error && <p>{error.message}</p> }
 			</div>
