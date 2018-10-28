@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { auth, db } from '../../firebase';
-import { Button } from '../../components';
+import { Button, withRouterWrapper } from '../../components';
 
 const INITIAL_STATE = {
 	userName: '',
@@ -48,47 +47,48 @@ class SignUp extends Component {
 
 	render() {
 		const { userName, email, password, passwordConfirmation, error } = this.state;
+		const { translate } = this.props;
 		const isInvalid = password !== passwordConfirmation
             || password === ''
             || email === ''
             || userName === '';
 		return (
 			<div className="layout__container layout__container--main">
-				<h1 className="layout__title">Signup</h1>
+				<h1 className="layout__title">{translate('views.signUp')}</h1>
 				<form className="layout__main layout__container layout__container--form form__container" onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={userName}
-						placeholder="User name"
+						placeholder={translate('views.userName')}
 						name="userName"
 						className="form__input"/>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={email}
-						placeholder="Address email"
+						placeholder={translate('views.emailAddress')}
 						name="email"
 						className="form__input"/>
 					<input
 						type="password"
 						onChange={this.handleInput}
 						value={password}
-						placeholder="Password"
+						placeholder={translate('views.password')}
 						name="password"
 						className="form__input"/>
 					<input
 						type="password"
 						onChange={this.handleInput}
 						value={passwordConfirmation}
-						placeholder="Confirm password"
+						placeholder={translate('views.confirmPassword')}
 						name="passwordConfirmation"
 						className="form__input"/>
 					<Button
 						type="submit"
 						cssClass="layout__button"
 						disabled={isInvalid}>
-                        Sign up
+						{translate('views.signUp')}
 					</Button>
 				</form>
 				{ error && <p>{error.message}</p>}
@@ -97,8 +97,9 @@ class SignUp extends Component {
 	}
 }
 
-export default withRouter(SignUp);
+export default withRouterWrapper(SignUp);
 
 SignUp.propTypes = {
-	history: PropTypes.object
+	history: PropTypes.object.isRequired,
+	translate: PropTypes.func.isRequired
 };
