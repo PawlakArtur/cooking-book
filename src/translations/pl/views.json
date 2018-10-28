@@ -30,6 +30,10 @@
 	"addNewProduct": "Dodaj nowy produkt",
 	"addProduct": "Dodaj produkt",
 	"home": "Strona główna",
-	"listOfUsers": "Lista użytkowników"
-
+	"listOfUsers": "Lista użytkowników",
+	"signIn": "Zaloguj się",
+	"password": "Hasło",
+	"signUp": "Zarejestruj się",
+	"userName": "Nazwa użytkownika",
+	"confirmPassword": "Potwierdź hasło"
 }

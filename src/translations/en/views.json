@@ -30,6 +30,10 @@
 	"addNewProduct": "Add new product",
 	"addProduct": "Add product",
 	"home": "Home",
-	"listOfUsers": "List of users"
-
+	"listOfUsers": "List of users",
+	"signIn": "Sign in",
+	"password": "Password",
+	"signUp": "Sign up",
+	"userName": "User name",
+	"confirmPassword": "Confirm password"
 }
