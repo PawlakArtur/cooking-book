@@ -40,9 +40,9 @@ class Recipes extends Component {
 		const { error, recipes } = this.state;
 		const { categoryList, translate } = this.props;
 		return (
-			<section className="section__container">
-				<h1 className="section__header">{translate('views.recipeList')}:</h1>
-				<div className="section__buttons">
+			<section className="layout__container layout__container--main">
+				<h1 className="layout__title">{translate('views.recipeList')}:</h1>
+				<div className="layout__buttons">
 					<Button
 						cssClass="button__link--primary"
 						to="/recipeAdd"

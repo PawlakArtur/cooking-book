@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { auth, store } from '../../firebase';
-import { withAuthorization } from '../../components';
+import { withAuthorization, Button } from '../../components';
 
 const INITIAL_STATE = {
 	name: '',
@@ -73,20 +73,22 @@ class RecipeAdd extends Component {
 		const { categoryList, productList, translate } = this.props;
 		const isInvalid = name === '' || categoryID === '';
 		return (
-			<div>
-				<h1>{translate('views.addNewRecipe')}</h1>
-				<form onSubmit={this.onSubmit}>
+			<div className="layout__container layout__container--main">
+				<h1 className="layout__title">{translate('views.addNewRecipe')}</h1>
+				<form className="layout__main layout__container layout__container--form form__container" onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={name}
 						placeholder={translate('views.recipeName')}
-						name="name"/>
+						name="name"
+						className="form__input"/>
 					<select
 						onChange={this.handleInput}
 						value={categoryID}
 						placeholder={translate('views.categoryName')}
-						name="categoryID">
+						name="categoryID"
+						className="form__input">
 						<option>--{translate('views.chooseCategory')}--</option>
 						{ categoryList.map(category =>
 							<option key={category.id} value={category.id}>{category.name}</option>
@@ -97,7 +99,8 @@ class RecipeAdd extends Component {
 						value={products}
 						placeholder="Recipe products"
 						name={translate('views.productName')}
-						multiple>
+						multiple
+						className="form__input">
 						<option>--{translate('views.productName')}--</option>
 						{ productList.map(product =>
 							<option key={product.id} value={product.id}>{product.name}</option>
@@ -108,36 +111,42 @@ class RecipeAdd extends Component {
 						onChange={this.handleInput}
 						value={executionTime}
 						placeholder={translate('views.executionTime')}
-						name="executionTime"/>
+						name="executionTime"
+						className="form__input"/>
 					<textarea
 						onChange={this.handleInput}
 						value={introduction}
 						placeholder={translate('views.recipeIntroduction')}
-						name="introduction"/>
+						name="introduction"
+						className="form__input layout__input--wide"/>
+					<Button
+						cssClass="layout__button"
+						disabled={isInvalid}
+						actionFunction={this.addNewStep}>
+						{translate('views.addNewStep')}
+					</Button>
 					{ steps.map((step, index) =>
 						<textarea
 							key={`step-${index}`}
 							onChange={this.handleStepInputs.bind(this, index)}
 							value={steps[index]}
 							placeholder={`${translate('views.step')} ${index + 1}`}
-							name="step"/>
+							name="step"
+							className="form__input layout__input--wide"/>
 					)}
-					<button
-						type="button"
-						onClick={this.addNewStep}>
-						{translate('views.addNewStep')}
-					</button>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={sourceLink}
 						placeholder={translate('views.recipeSourceLink')}
-						name="sourceLink"/>
-					<button
+						name="sourceLink"
+						className="form__input"/>
+					<Button
 						type="submit"
+						cssClass="layout__button"
 						disabled={isInvalid}>
 						{translate('views.addRecipe')}
-					</button>
+					</Button>
 				</form>
 				{ error && <p>{error.message}</p> }
 			</div>
