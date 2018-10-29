@@ -47,4 +47,8 @@ Button.propTypes = {
 	to: PropTypes.string
 };
 
+Button.defaultProps = {
+	cssClass: ''
+};
+
 export default Button;
