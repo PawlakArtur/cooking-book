@@ -32,6 +32,7 @@ $element_list_background_second: #465074;
 	display: inline-block;
 	vertical-align: top;
 	height: 100px;
+	width:100px;
 	img {
 		width: 99px;
 		height: 100%;
@@ -43,7 +44,7 @@ $element_list_background_second: #465074;
 	display: inline-block;
 	vertical-align: top;
 	padding: 10px;
-	width: 60%;
+	width: calc(100% - 20% - 100px);
 }
 
 .recipe__buttons {
@@ -52,6 +53,7 @@ $element_list_background_second: #465074;
 	justify-content: center;
 	align-items: center;
 	height: 100px;
+	position: relative;
 }
 
 .recipe__title, .recipe__executionTime, .recipe__category {
@@ -70,37 +72,55 @@ $element_list_background_second: #465074;
 	color: $font_secondary_color;
 }
 
+.recipe__removeButton {
+	transition: transform 300ms ease-out;
+
+	&.recipe__removeButton-enter {
+		transform: translateX(0);
+	} 
+	&.recipe__removeButton-enter-active, &.recipe__removeButton-enter-done {
+		transform: translateX(-35px);
+	}
+	&.recipe__removeButton-exit {
+		transform: translateX(-35px);
+	}
+	&.recipe__removeButton-exit-active {
+		transform: translateX(0);
+	}
+}
+
 .recipe__confirmation {
+	position: absolute;
+	right: 0;
 	font-size: 16px;
-	width: 80%;
-	margin: 0 auto;
-	background: $element_list_background_first;
-	border-radius: 0 0 10px 10px;
-	padding: 5px 0 10px;
-	text-align: center;
-	transform-origin: top center;
+	width: 80px;
+	height: 100%;
+	transition: transform 300ms ease-out, opacity 300ms ease-out;
 
 	.button__button {
-		margin-right: 5px;
+		width: 100%;
+		border-radius: 0;
+		height: 50%;
+		&:first-child() {
+			border-bottom: 1px solid $element_list_background_first;
+		}
 	}
 
 	&.recipe__confirmation-enter {
 		opacity: 0.01;
-		transform: scale(0.9) translateY(-50%);
+		transform: scale(0.9) translateX(50%);
 	} 
 	&.recipe__confirmation-enter-active {
 		opacity: 1;
-		transform: scale(1) translateY(0%);
-		transition: transform 300ms ease-out, opacity 300ms ease-out;
+		transform: scale(1) translateX(0%);
 	}
 	&.recipe__confirmation-exit {
 		opacity: 1;
-		transform: scale(1) translateY(0%);
+		transform: scale(1) translateX(0%);
 	}
 	&.recipe__confirmation-exit-active {
 		opacity: 0.01;
-		transform: scale(0.9) translateY(-50%);
-		transition: transform 300ms ease-out, opacity 300ms ease-out;
+		transform: scale(0.9) translateX(50%);
 	}
 }
 

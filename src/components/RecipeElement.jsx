@@ -39,29 +39,35 @@ class RecipeElement extends Component {
 					<p className="recipe__category">{translate('views.category')}: {cateogryName}</p>
 				</div>
 				<div className="recipe__buttons">
-					<Button
-						actionFunction={this.toggleConfirmationButtons.bind(this, true)}>
-						{translate('shared.remove')}
-					</Button>
+					<CSSTransition
+						in={showRemoveButtons}
+						timeout={300}
+						classNames="recipe__removeButton">
+						<Button
+							cssClass="recipe__removeButton"
+							actionFunction={this.toggleConfirmationButtons.bind(this, true)}>
+							{translate('shared.remove')}
+						</Button>
+					</CSSTransition>
+					<CSSTransition
+						in={showRemoveButtons}
+						timeout={300}
+						classNames="recipe__confirmation"
+						unmountOnExit>
+						<div className="recipe__confirmation">
+							<Button
+								cssClass="button__button--primary"
+								actionFunction={this.handleRemoveRecipe.bind(this, recipe.id)}>
+								{translate('shared.yes')}
+							</Button>
+							<Button
+								actionFunction={this.toggleConfirmationButtons}>
+								{translate('shared.no')}
+							</Button>
+						</div>
+					</CSSTransition>
 				</div>
 			</div>
-			<CSSTransition
-				in={showRemoveButtons}
-				timeout={300}
-				classNames="recipe__confirmation"
-				unmountOnExit>
-				<div className="recipe__confirmation">
-					<p className="confirmation__title">{translate('messages.removeElement')}</p>
-					<Button
-						actionFunction={this.toggleConfirmationButtons}>
-						{translate('shared.no')}
-					</Button>
-					<Button
-						actionFunction={this.handleRemoveRecipe.bind(this, recipe.id)}>
-						{translate('shared.yes')}
-					</Button>
-				</div>
-			</CSSTransition>
 		</li>;
 	}
 }
