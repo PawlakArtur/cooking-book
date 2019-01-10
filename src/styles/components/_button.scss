@@ -32,3 +32,8 @@
 		background: darken($background_primary, 10%);
 	}
 }
+
+.button__button--transparent {
+	color: $font_main_color;
+	background: transparent;
+}
