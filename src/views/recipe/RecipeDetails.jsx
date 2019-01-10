@@ -28,7 +28,7 @@ class RecipeDetails extends Component {
 
 	render() {
 		const { recipe } = this.state;
-		const { translate, categoryList } = this.props;
+		const { translate, categoryList, productList } = this.props;
 		return (
 			<section className="layout__container layout__container--recipeDetails">
 				<h1 className="layout__title">{translate('views.recipe')}: {recipe.name}</h1>
@@ -40,7 +40,7 @@ class RecipeDetails extends Component {
 						{translate('shared.backToList')}
 					</Button>
 				</div>
-				<RecipeInfo recipe={recipe} categoryList={categoryList} translate={translate}/>
+				<RecipeInfo recipe={recipe} categoryList={categoryList} productList={productList} translate={translate}/>
 			</section>
 		);
 	}
@@ -57,5 +57,6 @@ RecipeDetails.propTypes = {
 		})
 	}),
 	translate: PropTypes.func.isRequired,
-	categoryList: PropTypes.array
+	categoryList: PropTypes.array,
+	productList: PropTypes.array
 };

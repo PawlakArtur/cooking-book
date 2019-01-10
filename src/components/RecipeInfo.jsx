@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const INITIAL_STATE = {
-	recipeCategoryName: ''
+	recipeCategoryName: '',
+	productsMap: [],
+	loadingRecipe: true,
+	loadingCategories: true,
+	loadingProducts: true
 };
 
 class RecipeInfo extends Component {
@@ -12,34 +16,51 @@ class RecipeInfo extends Component {
 	}
 
 	componentDidUpdate() {
-		if (this.props.categoryList.length && this.props.recipe.categoryID && !this.state.recipeCategoryName) {
+		if (Object.keys(this.props.recipe).length && this.state.loadingRecipe) {
+			this.setState({ loadingRecipe: false });
+		}
+		if (this.props.categoryList.length && this.props.recipe.categoryID && this.state.loadingCategories) {
 			const recipeCategory = this.props.categoryList.find(category => category.id === this.props.recipe.categoryID);
-			this.setState({ recipeCategoryName: recipeCategory.name });
+			this.setState({ recipeCategoryName: recipeCategory.name, loadingCategories: false });
+		}
+		if (this.props.productList.length && this.props.recipe.products && this.state.loadingProducts) {
+			const filteredProducts = this.props.productList.filter(product => this.props.recipe.products.includes(product.id));
+			const productsMap = {};
+			filteredProducts.forEach(product => {
+				productsMap[product.id] = product;
+			});
+			this.setState({ productsMap: productsMap, loadingProducts: false });
 		}
 	}
 
 	render() {
 		const { translate, recipe: { executionTime, numberOfEntries, recomended, sourceLink, products, introduction, steps }} = this.props;
-		const { recipeCategoryName } = this.state;
+		const { recipeCategoryName, productsMap, loadingRecipe, loadingCategories, loadingProducts } = this.state;
+		const loading = loadingRecipe && loadingCategories && loadingProducts;
 		return (
-			<div className="layout__recipeDetails">
-				<p><span>{translate('views.executionTime')}:</span> <span>{executionTime}</span></p>
-				<p><span>{translate('views.category')}:</span> <span>{recipeCategoryName}</span></p>
-				<p>{recomended ? <span>{translate('views.recomended')}</span> : null}</p>
-				<ul>
-					{products && products.map((product, index) =>
-						<li key={`product-${index}`}>{product}</li>
-					)}
-				</ul>
-				<p>{introduction}</p>
-				<ul>
-					{steps && steps.map((step, index) =>
-						<li key={`step-${index}`}>{step}</li>
-					)}
-				</ul>
-				<p><span>{translate('views.numberOfEntries')}:</span> <span>{numberOfEntries}</span></p>
-				<p><span>{translate('views.recipeSourceLink')}:</span> <span>{sourceLink}</span></p>
-			</div>
+			<>
+			{ !loading
+			&& (
+				<div className="layout__recipeDetails">
+					<p><span>{translate('views.executionTime')}:</span> <span>{executionTime}</span></p>
+					<p><span>{translate('views.category')}:</span> <span>{recipeCategoryName}</span></p>
+					<p>{recomended ? <span>{translate('views.recomended')}</span> : null}</p>
+					<ul>
+						{products && products.map(product =>
+							<li key={product}>{productsMap[product].name}</li>
+						)}
+					</ul>
+					<p>{introduction}</p>
+					<ul>
+						{steps && steps.map((step, index) =>
+							<li key={`step-${index}`}>{step}</li>
+						)}
+					</ul>
+					<p><span>{translate('views.numberOfEntries')}:</span> <span>{numberOfEntries}</span></p>
+					<p><span>{translate('views.recipeSourceLink')}:</span> <span>{sourceLink}</span></p>
+				</div>
+			)}
+			</>
 		);
 	}
 }
@@ -52,10 +73,12 @@ RecipeInfo.propTypes = {
 		sourceLink: PropTypes.string,
 		products: PropTypes.array,
 		introduction: PropTypes.string,
-		steps: PropTypes.array
+		steps: PropTypes.array,
+		categoryID: PropTypes.string
 	}).isRequired,
 	translate: PropTypes.func.isRequired,
-	categoryList: PropTypes.array.isRequired
+	categoryList: PropTypes.array.isRequired,
+	productList: PropTypes.array.isRequired
 };
 
 export default RecipeInfo;
