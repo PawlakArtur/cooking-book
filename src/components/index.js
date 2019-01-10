@@ -8,6 +8,7 @@ import RecipeList from './RecipeList';
 import RecipeElement from './RecipeElement';
 import Button from './Button';
 import withRouterWrapper from './withRouterWrapper';
+import RecipeInfo from './RecipeInfo';
 
 export {
 	SignOutButton,
@@ -19,5 +20,6 @@ export {
 	RecipeList,
 	RecipeElement,
 	Button,
-	withRouterWrapper
+	withRouterWrapper,
+	RecipeInfo
 };

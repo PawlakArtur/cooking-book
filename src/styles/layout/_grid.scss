@@ -10,6 +10,14 @@
 		". main main .";
 }
 
+.layout__container--recipeDetails {
+	grid-template-columns: 10% 1fr 1fr 10%;
+	grid-template-rows: 50px 1fr;
+	grid-template-areas:
+		". title buttons ."
+		". recipeDetails recipeDetails .";
+}
+
 .layout__title {
 	grid-area: title;
 	align-self: center;
@@ -24,6 +32,10 @@
 
 .layout__main {
 	grid-area: main;
+}
+
+.layout__recipeDetails {
+	grid-area: recipeDetails;
 }
 
 .layout__container--list {

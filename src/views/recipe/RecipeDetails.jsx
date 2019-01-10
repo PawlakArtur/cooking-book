@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { auth, store } from '../../firebase';
-import { withAuthorization } from '../../components';
-import { Link } from 'react-router-dom';
+import { withAuthorization, Button, RecipeInfo } from '../../components';
 
 const INITIAL_STATE = {
 	recipe: {},
@@ -28,31 +27,21 @@ class RecipeDetails extends Component {
 	}
 
 	render() {
-		const { recipe: { categoryID, executionTime, name, numberOfEntries, products, introduction, steps, recomended, sourceLink }} = this.state;
-		const { translate } = this.props;
+		const { recipe } = this.state;
+		const { translate, categoryList } = this.props;
 		return (
-			<div>
-				<div>
-					<Link to="/recipes">{translate('shared.backToList')}</Link>
+			<section className="layout__container layout__container--recipeDetails">
+				<h1 className="layout__title">{translate('views.recipe')}: {recipe.name}</h1>
+				<div className="layout__buttons">
+					<Button
+						cssClass="button__link--primary"
+						to="/recipes"
+						linkButton>
+						{translate('shared.backToList')}
+					</Button>
 				</div>
-				<h1>{translate('views.recipe')}: {name}</h1>
-				<p>{executionTime}</p>
-				<p>{categoryID}</p>
-				<p>{numberOfEntries}</p>
-				<p>{recomended}</p>
-				<p>{sourceLink}</p>
-				<ul>
-					{products && products.map((product, index) =>
-						<li key={`product-${index}`}>{product}</li>
-					)}
-				</ul>
-				<p>{introduction}</p>
-				<ul>
-					{steps && steps.map((step, index) =>
-						<li key={`step-${index}`}>{step}</li>
-					)}
-				</ul>
-			</div>
+				<RecipeInfo recipe={recipe} categoryList={categoryList} translate={translate}/>
+			</section>
 		);
 	}
 }
@@ -67,5 +56,6 @@ RecipeDetails.propTypes = {
 			recipeID: PropTypes.string
 		})
 	}),
-	translate: PropTypes.func.isRequired
+	translate: PropTypes.func.isRequired,
+	categoryList: PropTypes.array
 };

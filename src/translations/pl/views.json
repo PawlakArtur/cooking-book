@@ -35,5 +35,7 @@
 	"password": "Hasło",
 	"signUp": "Zarejestruj się",
 	"userName": "Nazwa użytkownika",
-	"confirmPassword": "Potwierdź hasło"
+	"confirmPassword": "Potwierdź hasło",
+	"numberOfEntries": "Liczba wejść",
+	"recomended": "Rekomendowany"
 }

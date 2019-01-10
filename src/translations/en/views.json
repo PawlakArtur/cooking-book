@@ -35,5 +35,7 @@
 	"password": "Password",
 	"signUp": "Sign up",
 	"userName": "User name",
-	"confirmPassword": "Confirm password"
+	"confirmPassword": "Confirm password",
+	"numberOfEntries": "Number of entries",
+	"recomended": "Recomended"
 }
