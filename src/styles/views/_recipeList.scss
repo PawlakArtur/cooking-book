@@ -9,7 +9,6 @@ $element_list_background_second: #465074;
 
 .recipe__element {
 	font-size: 0;
-	box-shadow: 0 15px 14px -20px #000;
 	border-radius: 10px;
 }
 
@@ -22,6 +21,7 @@ $element_list_background_second: #465074;
 	overflow: hidden;
 	z-index: 10;
 	position: relative;
+	box-shadow: 0 15px 14px -20px #000;
 }
 
 .recipe__link {
