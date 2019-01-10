@@ -43,7 +43,7 @@ class RecipeInfo extends Component {
 			<>
 			{ !loading
 			&& (
-				<div className="layout__recipeDetails">
+				<div className="layout__recipeDetails layout__container--background">
 					<p><span>{translate('views.executionTime')}:</span> <span>{formattedExecutionTime.hours}h {formattedExecutionTime.minutes ? `${formattedExecutionTime.minutes} m` : ''}</span></p>
 					<p><span>{translate('views.category')}:</span> <span>{recipeCategoryName}</span></p>
 					<p>{recomended ? <span>{translate('views.recomended')}</span> : null}</p>

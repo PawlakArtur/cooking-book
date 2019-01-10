@@ -11,11 +11,13 @@
 }
 
 .layout__container--recipeDetails {
-	grid-template-columns: 10% 1fr 1fr 10%;
-	grid-template-rows: 50px 1fr;
+	grid-template-columns: 10% 2fr 1fr 10%;
+	grid-template-rows: auto 1fr;
 	grid-template-areas:
 		". title buttons ."
 		". recipeDetails recipeDetails .";
+	grid-row-gap: 10px;
+	padding-top: 10px;
 }
 
 .layout__title {
@@ -57,4 +59,11 @@
 .layout__button {
 	grid-column-start: 1;
 	justify-self: start;
+}
+
+.layout__container--background {
+	padding: 10px;
+	background: linear-gradient(to right, $element_list_background_first, $element_list_background_second);
+	border-radius: 10px;
+	box-shadow: 0 5px 20px -5px #000;
 }
