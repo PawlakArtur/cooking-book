@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { formatTime } from '../utils';
 
 const INITIAL_STATE = {
 	recipeCategoryName: '',
@@ -36,13 +37,14 @@ class RecipeInfo extends Component {
 	render() {
 		const { translate, recipe: { executionTime, numberOfEntries, recomended, sourceLink, products, introduction, steps }} = this.props;
 		const { recipeCategoryName, productsMap, loadingRecipe, loadingCategories, loadingProducts } = this.state;
+		const formattedExecutionTime = formatTime(executionTime);
 		const loading = loadingRecipe && loadingCategories && loadingProducts;
 		return (
 			<>
 			{ !loading
 			&& (
 				<div className="layout__recipeDetails">
-					<p><span>{translate('views.executionTime')}:</span> <span>{executionTime}</span></p>
+					<p><span>{translate('views.executionTime')}:</span> <span>{formattedExecutionTime.hours}h {formattedExecutionTime.minutes ? `${formattedExecutionTime.minutes} m` : ''}</span></p>
 					<p><span>{translate('views.category')}:</span> <span>{recipeCategoryName}</span></p>
 					<p>{recomended ? <span>{translate('views.recomended')}</span> : null}</p>
 					<ul>
