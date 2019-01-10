@@ -97,8 +97,8 @@ class RecipeAdd extends Component {
 					<select
 						onChange={this.handleMultipleSelect}
 						value={products}
-						placeholder="Recipe products"
-						name={translate('views.productName')}
+						placeholder="translate('views.productName')"
+						name="products"
 						multiple
 						className="form__input">
 						<option>--{translate('views.productName')}--</option>
