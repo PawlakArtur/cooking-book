@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { store } from '../../firebase';
-import { withAuthorization } from '../../components';
 import PropTypes from 'prop-types';
+import { store } from '../../firebase';
+import { withAuthorization, Button } from '../../components';
 
 const INITIAL_STATE = {
 	name: '',
@@ -38,20 +38,22 @@ class CategoryAdd extends Component {
 		const { translate } = this.props;
 		const isInvalid = name === '';
 		return (
-			<div>
-				<h1>{translate('views.addNewCategory')}</h1>
-				<form onSubmit={this.onSubmit}>
+			<div className="layout__container layout__container--main">
+				<h1 className="layout__title">{translate('views.addNewCategory')}</h1>
+				<form className="layout__main layout__container layout__container--form form__container" onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						onChange={this.handleInput}
 						value={name}
 						placeholder={translate('views.categoryName')}
-						name="name"/>
-					<button
+						name="name"
+						className="form__input layout__input--wide"/>
+					<Button
 						type="submit"
+						cssClass="layout__button"
 						disabled={isInvalid}>
 						{translate('views.addCategory')}
-					</button>
+					</Button>
 				</form>
 				{error && <p>{error.message}</p>}
 			</div>
