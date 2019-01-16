@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { store } from '../../firebase';
+import { Button } from '../../components';
 
 const INITIAL_STATE = {
 	languages: [ 'pl', 'en' ]
@@ -40,24 +41,28 @@ class AccountSettings extends Component {
 	render() {
 		const { languages, userSettings: { language }} = this.state;
 		const { translate } = this.props;
+		const isInvalid = language === '';
 		return (
-			<section>
-				<h2>{translate('views.userSettings')}:</h2>
-				<form onSubmit={this.onSubmit}>
+			<section className="layout__container layout__container--wide layout__item--wide">
+				<h2 className="layout__title">{translate('views.userSettings')}:</h2>
+				<form onSubmit={this.onSubmit} className="layout__main layout__container layout__container--form form__container">
 					<select
 						onChange={this.handleInput}
 						value={language}
 						placeholder={translate('views.userLanguage')}
-						name="language">
+						name="language"
+						className="form__input layout__input--wide">
 						<option>--{translate('views.chooseLanguage')}--</option>
 						{ languages.map((optionLanguage, index) =>
 							<option key={`language_${index}`} value={optionLanguage}>{optionLanguage}</option>
 						)}
 					</select>
-					<button
-						type="submit">
+					<Button
+						type="submit"
+						cssClass="layout__button"
+						disabled={isInvalid}>
 						{translate('shared.submit')}
-					</button>
+					</Button>
 				</form>
 			</section>
 		);

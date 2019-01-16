@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { auth } from '../../firebase';
 import PropTypes from 'prop-types';
+import { auth } from '../../firebase';
+import { Button } from '../../components';
 
 const INITIAL_STATE = {
 	email: '',
@@ -35,26 +36,28 @@ class PasswordForget extends Component {
 
 	render() {
 		const { email, error } = this.state;
-		const isinvalid = email === '';
+		const isInvalid = email === '';
 		const { translate } = this.props;
 		return (
-			<div>
-				<h1>{translate('views.changePassword')}</h1>
-				<form onSubmit={this.onSubmit}>
+			<section className="layout__container layout__container--wide layout__item--wide">
+				<h2 className="layout__title">{translate('views.changePassword')}</h2>
+				<form onSubmit={this.onSubmit} className="layout__main layout__container layout__container--form form__container">
 					<input
 						type="text"
 						value={email}
 						onChange={this.handleInput}
 						placeholder={translate('views.emailAddress')}
-						name="email"/>
-					<button
-						disabled={isinvalid}
-						type="submit">
+						name="email"
+						className="form__input layout__input--wide"/>
+					<Button
+						type="submit"
+						cssClass="layout__button"
+						disabled={isInvalid}>
 						{translate('shared.submit')}
-					</button>
+					</Button>
 				</form>
 				{ error && <p>error.message</p>}
-			</div>
+			</section>
 		);
 	}
 }

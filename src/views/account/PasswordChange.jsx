@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { auth } from '../../firebase';
 import PropTypes from 'prop-types';
+import { auth } from '../../firebase';
+import { Button } from '../../components';
 
 const INITIAL_STATE = {
 	password: '',
@@ -39,29 +40,32 @@ class PasswordChange extends Component {
 		const isInvalid = password !== passwordConfirmation || password === '';
 		const { translate } = this.props;
 		return (
-			<div>
-				<h1>{translate('views.changePassword')}</h1>
-				<form onSubmit={this.onSubmit}>
+			<section className="layout__container layout__container--wide layout__item--wide">
+				<h2 className="layout__title">{translate('views.changePassword')}</h2>
+				<form onSubmit={this.onSubmit} className="layout__main layout__container layout__container--form form__container">
 					<input
 						type="text"
 						value={password}
 						onChange={this.handleInput}
 						placeholder={translate('views.newPassword')}
-						name="password"/>
+						name="password"
+						className="form__input"/>
 					<input
 						type="text"
 						value={passwordConfirmation}
 						onChange={this.handleInput}
 						placeholder={translate('views.confirmNewPassword')}
-						name="passwordConfirmation"/>
-					<button
+						name="passwordConfirmation"
+						className="form__input"/>
+					<Button
 						type="submit"
+						cssClass="layout__button"
 						disabled={isInvalid}>
 						{translate('shared.submit')}
-					</button>
+					</Button>
 				</form>
 				{ error && <p>{error.message}</p> }
-			</div>
+			</section>
 		);
 	}
 }

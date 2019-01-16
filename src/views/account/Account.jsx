@@ -7,8 +7,8 @@ import { withAuthorization } from '../../components';
 
 const Account = ({ userSettings, translate }) =>
 	userSettings && Object.keys(userSettings).length > 0
-		? <div>
-			<h1>{translate('views.account')}: {userSettings.username}</h1>
+		? <div className="layout__container layout__container--multiple">
+			<h1 className="layout__title--wide">{translate('views.account')}: {userSettings.username}</h1>
 			<AccountSettings userSettings={userSettings} translate={translate}/>
 			<PasswordForget translate={translate}/>
 			<PasswordChange translate={translate}/>
