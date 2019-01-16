@@ -26,6 +26,11 @@
 	margin: 0;
 }
 
+.layout__title--wide {
+	grid-column-start: 2;
+	grid-column-end: 3;
+}
+
 .layout__buttons {
 	grid-area: buttons;
 	justify-self: end;
@@ -66,4 +71,21 @@
 	background: linear-gradient(to right, $element_list_background_first, $element_list_background_second);
 	border-radius: 10px;
 	box-shadow: 0 5px 20px -5px #000;
+}
+
+.layout__container--multiple {
+	grid-template-columns: repeat(1, 10% 1fr 10%);
+}
+
+.layout__item--wide {
+	grid-column-start: 2;
+	grid-column-end: 3;
+}
+
+.layout__container--wide {
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 50px 1fr;
+	grid-template-areas:
+		"title buttons"
+		"main main";
 }
