@@ -2,18 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const LinkButton = ({ children, cssClass, to }) =>
+const LinkButton = ({ children, cssClass, to, disabled }) =>
 	<Link
 		className={`button__link ${cssClass}`}
 		to={to}
-		role="button">
+		role="button"
+		disabled={disabled}>
 		{children}
 	</Link>;
 
 LinkButton.propTypes = {
 	children: PropTypes.string,
 	cssClass: PropTypes.string,
-	to: PropTypes.string
+	to: PropTypes.string,
+	disabled: PropTypes.bool
 };
 
 const buttonFunction = (actionFunction, type, e) => {
@@ -25,11 +27,12 @@ const buttonFunction = (actionFunction, type, e) => {
 	}
 };
 
-const ActionButton = ({ actionFunction, children, cssClass, type }) =>
+const ActionButton = ({ actionFunction, children, cssClass, type, disabled }) =>
 	<button
 		className={`button__button ${cssClass}`}
 		onClick={buttonFunction.bind(null, actionFunction, type)}
-		type={type}>
+		type={type}
+		disabled={disabled}>
 		{children}
 	</button>;
 
@@ -37,7 +40,8 @@ ActionButton.propTypes = {
 	actionFunction: PropTypes.func,
 	children: PropTypes.string,
 	cssClass: PropTypes.string,
-	type: PropTypes.string
+	type: PropTypes.string,
+	disabled: PropTypes.bool
 };
 
 const Button = props =>
@@ -51,7 +55,8 @@ Button.propTypes = {
 	cssClass: PropTypes.string,
 	linkButton: PropTypes.bool,
 	to: PropTypes.string,
-	type: PropTypes.string
+	type: PropTypes.string,
+	disabled: PropTypes.bool
 };
 
 Button.defaultProps = {
@@ -59,7 +64,8 @@ Button.defaultProps = {
 	cssClass: '',
 	linkButton: false,
 	to: null,
-	type: 'button'
+	type: 'button',
+	disabled: false
 };
 
 Button.defaultProps = {
