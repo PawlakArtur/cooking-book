@@ -13,7 +13,8 @@ const extendedProvider = Component => {
 				authUser: null,
 				productList: [],
 				categoryList: [],
-				userSettings: {}
+				userSettings: {},
+				loadingApp: true
 			};
 
 			this.setUserData = this.setUserData.bind(this);
@@ -21,6 +22,8 @@ const extendedProvider = Component => {
 		}
 
 		componentDidMount() {
+			this.setState({ loadingApp: true });
+
 			firebase.auth.onAuthStateChanged(this.setUserData);
 
 			store.listenForResource('products', snapshot => {
@@ -46,6 +49,7 @@ const extendedProvider = Component => {
 			} else {
 				this.setState({ authUser: null, userSettings: {}});
 			}
+			this.setState({ loadingApp: false });
 		}
 
 		getTranslate(path) {
@@ -54,10 +58,10 @@ const extendedProvider = Component => {
 		}
 
 		render() {
-			const { authUser, productList, categoryList, userSettings } = this.state;
+			const { authUser, productList, categoryList, userSettings, loadingApp } = this.state;
 			return (
 				<AuthUserContext.Provider value={authUser}>
-					<DataContext.Provider value={({ productList, categoryList, userSettings })}>
+					<DataContext.Provider value={({ productList, categoryList, userSettings, loadingApp })}>
 						<MethodsContext.Provider value={({ translate: this.getTranslate })}>
 							<Component/>
 						</MethodsContext.Provider>
