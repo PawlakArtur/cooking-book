@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SignOutButton from './SignOutButton';
 import AuthUserContext from './AuthUserContext';
 import MethodsContext from './MethodsContext';
+import DataContext from './DataContext';
 import PropTypes from 'prop-types';
 
 const Navigation = () =>
@@ -10,11 +11,17 @@ const Navigation = () =>
 		{ authUser =>
 			<MethodsContext.Consumer>
 				{ ({ translate }) =>
-					<nav>
-						{ authUser
-							? <NavigationAuth translate={translate}/>
-							: <NavigationNonAuth translate={translate}/> }
-					</nav>
+					<DataContext.Consumer>
+						{ ({ loadingApp }) =>
+							loadingApp
+								? null
+								: <nav>
+									{ authUser
+										? <NavigationAuth translate={translate}/>
+										: <NavigationNonAuth translate={translate}/> }
+								</nav>
+						}
+					</DataContext.Consumer>
 				}
 			</MethodsContext.Consumer>
 		}
