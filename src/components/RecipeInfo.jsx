@@ -52,22 +52,24 @@ class RecipeInfo extends Component {
 						<div><span>{translate('views.category')}:</span> <span>{recipeCategoryName}</span></div>
 						{recomended ? <div><span>{translate('views.recomended')}</span></div> : null}
 					</div>
-					<div className="recipeDetails__products-title">{translate('views.products')}:</div>
-					<ul className="recipeDetails__products">
-						{products && products.map(product =>
-							<li key={product} className="recipeDetails__product">{productsMap[product].name}</li>
-						)}
-					</ul>
-					<div className="recipeDetails__content">
-						<div>{introduction}</div>
-						<ul>
-							{steps && steps.map((step, index) =>
-								<li key={`step-${index}`}>{step}</li>
+					<div className="recipeDetails__wrapper">
+						<h2 className="recipeDetails__products-title">{translate('views.products')}:</h2>
+						<ul className="recipeDetails__products">
+							{products && products.map(product =>
+								<li key={product} className="recipeDetails__product">{productsMap[product].name}</li>
 							)}
 						</ul>
+						<div className="recipeDetails__content">
+							<div>{introduction}</div>
+							<ul>
+								{steps && steps.map((step, index) =>
+									<li key={`step-${index}`}>{step}</li>
+								)}
+							</ul>
+						</div>
+						<div><span>{translate('views.numberOfEntries')}:</span> <span>{numberOfEntries}</span></div>
+						<div><span>{translate('views.recipeSourceLink')}:</span> <span>{sourceLink}</span></div>
 					</div>
-					<div><span>{translate('views.numberOfEntries')}:</span> <span>{numberOfEntries}</span></div>
-					<div><span>{translate('views.recipeSourceLink')}:</span> <span>{sourceLink}</span></div>
 				</div>
 			)}
 			</>
