@@ -37,5 +37,6 @@
 	"userName": "Nazwa użytkownika",
 	"confirmPassword": "Potwierdź hasło",
 	"numberOfEntries": "Liczba wejść",
-	"recomended": "Rekomendowany"
+	"recomended": "Rekomendowany",
+	"products": "Lista produktów"
 }

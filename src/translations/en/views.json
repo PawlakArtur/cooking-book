@@ -37,5 +37,6 @@
 	"userName": "User name",
 	"confirmPassword": "Confirm password",
 	"numberOfEntries": "Number of entries",
-	"recomended": "Recomended"
+	"recomended": "Recomended",
+	"products": "List of products"
 }

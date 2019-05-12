@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { formatTime } from '../utils';
+import stockPhoto from '../stock_photo.jpg';
 
 const INITIAL_STATE = {
 	recipeCategoryName: '',
@@ -35,31 +36,38 @@ class RecipeInfo extends Component {
 	}
 
 	render() {
-		const { translate, recipe: { executionTime, numberOfEntries, recomended, sourceLink, products, introduction, steps }} = this.props;
+		const { translate, recipe: { executionTime, numberOfEntries, recomended, sourceLink, products, introduction, steps, photo }} = this.props;
 		const { recipeCategoryName, productsMap, loadingRecipe, loadingCategories, loadingProducts } = this.state;
 		const formattedExecutionTime = formatTime(executionTime);
 		const loading = loadingRecipe && loadingCategories && loadingProducts;
+		const photoPath = photo ? photo : stockPhoto;
 		return (
 			<>
 			{ !loading
 			&& (
-				<div className="layout__recipeDetails layout__container--background">
-					<p><span>{translate('views.executionTime')}:</span> <span>{formattedExecutionTime.hours}h {formattedExecutionTime.minutes ? `${formattedExecutionTime.minutes}m` : ''}</span></p>
-					<p><span>{translate('views.category')}:</span> <span>{recipeCategoryName}</span></p>
-					<p>{recomended ? <span>{translate('views.recomended')}</span> : null}</p>
-					<ul>
+				<div className="layout__recipeDetails layout__container--no-padding layout__container--background">
+					<img src={photoPath} className="recipeDetails__photo" alt="recipe photo" />
+					<div className="recipeDetails__basicInfo">
+						<div><span>{translate('views.executionTime')}:</span> <span>{formattedExecutionTime.hours}h {formattedExecutionTime.minutes ? `${formattedExecutionTime.minutes}m` : ''}</span></div>
+						<div><span>{translate('views.category')}:</span> <span>{recipeCategoryName}</span></div>
+						{recomended ? <div><span>{translate('views.recomended')}</span></div> : null}
+					</div>
+					<div className="recipeDetails__products-title">{translate('views.products')}:</div>
+					<ul className="recipeDetails__products">
 						{products && products.map(product =>
-							<li key={product}>{productsMap[product].name}</li>
+							<li key={product} className="recipeDetails__product">{productsMap[product].name}</li>
 						)}
 					</ul>
-					<p>{introduction}</p>
-					<ul>
-						{steps && steps.map((step, index) =>
-							<li key={`step-${index}`}>{step}</li>
-						)}
-					</ul>
-					<p><span>{translate('views.numberOfEntries')}:</span> <span>{numberOfEntries}</span></p>
-					<p><span>{translate('views.recipeSourceLink')}:</span> <span>{sourceLink}</span></p>
+					<div className="recipeDetails__content">
+						<div>{introduction}</div>
+						<ul>
+							{steps && steps.map((step, index) =>
+								<li key={`step-${index}`}>{step}</li>
+							)}
+						</ul>
+					</div>
+					<div><span>{translate('views.numberOfEntries')}:</span> <span>{numberOfEntries}</span></div>
+					<div><span>{translate('views.recipeSourceLink')}:</span> <span>{sourceLink}</span></div>
 				</div>
 			)}
 			</>

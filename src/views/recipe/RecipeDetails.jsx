@@ -31,7 +31,7 @@ class RecipeDetails extends Component {
 		const { translate, categoryList, productList } = this.props;
 		return (
 			<section className="layout__container layout__container--recipeDetails">
-				<h1 className="layout__title">{translate('views.recipe')}: {recipe.name}</h1>
+				<h1 className="layout__title">{recipe.name}</h1>
 				<div className="layout__buttons">
 					<Button
 						cssClass="button__link--primary"

@@ -71,6 +71,11 @@
 	background: linear-gradient(to right, $element_list_background_first, $element_list_background_second);
 	border-radius: 10px;
 	box-shadow: 0 5px 20px -5px #000;
+	overflow: hidden;
+}
+
+.layout__container--no-padding {
+	padding: 0;
 }
 
 .layout__container--multiple {

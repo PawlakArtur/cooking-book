@@ -29,15 +29,18 @@ $element_list_background_second: #465074;
 	text-decoration: none;
 }
 
-.recipe__image {
+.recipe__image-wrapper {
 	display: inline-block;
 	vertical-align: top;
 	height: 100px;
 	width:100px;
-	img {
-		width: 99px;
+	.recipe__image {
+		width: 100%;
+		max-height: 180px;
+		display: block;
 		height: 100%;
 		object-fit: cover;
+		object-position: center;
 	}
 }
 

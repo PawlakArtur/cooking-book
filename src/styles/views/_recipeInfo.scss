@@ -1,0 +1,26 @@
+.recipeDetails {
+	&__photo {
+		width: 100%;
+		max-height: 180px;
+		display: block;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+	&__basicInfo {
+		background: $secondary_color;
+		display: flex;
+		justify-content: space-around;
+		padding: 10px 0;
+	}
+	&__products {
+		padding: 10px;
+		margin: 0 0 0 15px;
+	}
+	&__product {
+		
+	}
+	&__products-title {
+		padding: 10px 10px 0;
+	}
+}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import Button from './Button';
+import stockPhoto from '../stock_photo.jpg';
 
 class RecipeElement extends Component {
 	constructor() {
@@ -30,9 +31,12 @@ class RecipeElement extends Component {
 		const { recipe, translate } = this.props;
 		const { showRemoveButtons } = this.state;
 		const cateogryName = this.props.categoryList.find(cateogry => cateogry.id === recipe.categoryID).name;
+		const photoPath = recipe.photo ? recipe.photo : stockPhoto;
 		return <li className="recipe__element">
 			<div className="recipe__container">
-				<div className="recipe__image"></div>
+				<div className="recipe__image-wrapper">
+					<img src={photoPath} className="recipe__image" alt="recipe photo" />
+				</div>
 				<div className="recipe__information">
 					<h2 className="recipe__title"><Link className="recipe__link" to={`/recipeDetails/${recipe.id}`}>{recipe.name}</Link></h2>
 					<p className="recipe__executionTime">{translate('views.executionTime')}: {recipe.executionTime}</p>
