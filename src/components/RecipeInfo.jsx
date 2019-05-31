@@ -36,7 +36,7 @@ class RecipeInfo extends Component {
 	}
 
 	render() {
-		const { translate, recipe: { executionTime, numberOfEntries, recomended, sourceLink, products, introduction, steps, photo }} = this.props;
+		const { translate, recipe: { executionTime, numberOfEntries, recomended, sourceLink, products, introduction, method, photo }} = this.props;
 		const { recipeCategoryName, productsMap, loadingRecipe, loadingCategories, loadingProducts } = this.state;
 		const formattedExecutionTime = formatTime(executionTime);
 		const loading = loadingRecipe && loadingCategories && loadingProducts;
@@ -60,12 +60,8 @@ class RecipeInfo extends Component {
 							)}
 						</ul>
 						<div className="recipeDetails__content">
-							<div>{introduction}</div>
-							<ul>
-								{steps && steps.map((step, index) =>
-									<li key={`step-${index}`}>{step}</li>
-								)}
-							</ul>
+							<p className="recipeDetails__introduction">{introduction}</p>
+							<p className="recipeDetails__method">{method}</p>
 						</div>
 						<div><span>{translate('views.numberOfEntries')}:</span> <span>{numberOfEntries}</span></div>
 						<div><span>{translate('views.recipeSourceLink')}:</span> <span>{sourceLink}</span></div>
@@ -85,7 +81,7 @@ RecipeInfo.propTypes = {
 		sourceLink: PropTypes.string,
 		products: PropTypes.array,
 		introduction: PropTypes.string,
-		steps: PropTypes.array,
+		method: PropTypes.string,
 		categoryID: PropTypes.string
 	}).isRequired,
 	translate: PropTypes.func.isRequired,

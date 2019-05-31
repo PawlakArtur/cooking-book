@@ -4,7 +4,6 @@
 
 .layout__container--main {
 	grid-template-columns: 10% 1fr 1fr 10%;
-	grid-template-rows: 50px 1fr;
 	grid-template-areas:
 		". title buttons ."
 		". main main .";
@@ -23,7 +22,7 @@
 .layout__title {
 	grid-area: title;
 	align-self: center;
-	margin: 0;
+	margin: 5px 0;
 }
 
 .layout__title--wide {
@@ -49,9 +48,6 @@
 	grid-template-columns: 1fr 1fr;
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
-	@media (max-width: 900px) {
-		grid-template-columns: 1fr;
-	}
 }
 
 .layout__container--form {
@@ -62,6 +58,10 @@
 
 .layout__input--wide {
 	grid-column: 1 / 3;
+}
+
+.layout__input--height {
+	height: 250px;
 }
 
 .layout__button {
@@ -96,4 +96,14 @@
 	grid-template-areas:
 		"title buttons"
 		"main main";
+}
+
+@media (max-width: 900px) {
+	.layout__container--main {
+		grid-template-columns: 2% 1fr 1fr 2%;
+	}
+
+	.layout__container--list {
+		grid-template-columns: 1fr;
+	}
 }

@@ -6,7 +6,7 @@ import { withAuthorization, Button } from '../../components';
 const INITIAL_STATE = {
 	name: '',
 	introduction: '',
-	steps: [ '' ],
+	method: '',
 	categoryName: '',
 	categoryID: '',
 	executionTime: '',
@@ -25,16 +25,14 @@ class RecipeAdd extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 		this.handleInput = this.handleInput.bind(this);
 		this.handleMultipleSelect = this.handleMultipleSelect.bind(this);
-		this.handleStepInputs = this.handleStepInputs.bind(this);
-		this.addNewStep = this.addNewStep.bind(this);
 	}
 
 	onSubmit(e) {
-		const { recomended, numberOfEntries, name, introduction, steps, categoryID, executionTime, sourceLink, products } = this.state;
+		const { recomended, numberOfEntries, name, introduction, method, categoryID, executionTime, sourceLink, products } = this.state;
 		const currentUserUID = auth.getCurrentUserUID();
 		const addDate = new Date();
 		store.doCreateNewResource(`recipes/${currentUserUID}`, {
-			recomended, numberOfEntries, name, introduction, steps, categoryID, executionTime, sourceLink, products, addDate, author: currentUserUID
+			recomended, numberOfEntries, name, introduction, method, categoryID, executionTime, sourceLink, products, addDate, author: currentUserUID
 		})
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
@@ -54,22 +52,8 @@ class RecipeAdd extends Component {
 		this.setState({ [e.target.name]: selectedOptionsArray.map(option => option.value) });
 	}
 
-	handleStepInputs(index, e) {
-		const recipeStep = e.target.value;
-		this.setState(prevState => {
-			prevState.steps[index] = recipeStep;
-			return {
-				steps: prevState.steps
-			};
-		});
-	}
-
-	addNewStep() {
-		this.setState(prevState => ({ steps: [ ...prevState.steps, '' ]}));
-	}
-
 	render() {
-		const { name, introduction, steps, categoryID, executionTime, sourceLink, products, error } = this.state;
+		const { name, introduction, method, categoryID, executionTime, sourceLink, products, error } = this.state;
 		const { categoryList, productList, translate } = this.props;
 		const isInvalid = name === '' || categoryID === '';
 		return (
@@ -119,21 +103,12 @@ class RecipeAdd extends Component {
 						placeholder={translate('views.recipeIntroduction')}
 						name="introduction"
 						className="form__input layout__input--wide"/>
-					<Button
-						cssClass="layout__button"
-						disabled={isInvalid}
-						actionFunction={this.addNewStep}>
-						{translate('views.addNewStep')}
-					</Button>
-					{ steps.map((step, index) =>
-						<textarea
-							key={`step-${index}`}
-							onChange={this.handleStepInputs.bind(this, index)}
-							value={steps[index]}
-							placeholder={`${translate('views.step')} ${index + 1}`}
-							name="step"
-							className="form__input layout__input--wide"/>
-					)}
+					<textarea
+						onChange={this.handleInput}
+						value={method}
+						placeholder={translate('views.recipeMethod')}
+						name="method"
+						className="form__input layout__input--wide layout__input--height" />
 					<input
 						type="text"
 						onChange={this.handleInput}

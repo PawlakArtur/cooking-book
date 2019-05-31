@@ -18,3 +18,9 @@ nav {
 	text-decoration: none;
 	color: $font_main_color;
 }
+
+@media (max-width: 900px) {
+	.navigation__list {
+		width: 94%;
+	}
+}
