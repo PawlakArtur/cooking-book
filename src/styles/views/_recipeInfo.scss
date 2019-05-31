@@ -20,7 +20,6 @@
 		padding: 0 0 5px 5px;
     	margin: 0 0 10px;
 		list-style: none;
-		border-bottom: 1px solid #d5d5d5;
 	}
 	&__product {
 		&:not(:last-child) {
@@ -36,5 +35,16 @@
 	}
 	&__content {
 		white-space: pre-line;
+		width: 60%;
+		display: inline-block;
+	}
+	&__products-wrapper {
+		width: 40%;
+		display: inline-block;
+		vertical-align: top;
+		padding-left: 20px;
+	}
+	&__introduction, &__method {
+		padding-left: 5px;
 	}
 }
