@@ -4,6 +4,10 @@
 	border: solid 1px transparent;
 	transition: box-shadow 200ms;
 	outline: 0;
+
+	&--progress-bar {
+		width: 100%;
+	}
 	&:focus {
 		box-shadow: 0 5px 20px -5px #000;
 	}
