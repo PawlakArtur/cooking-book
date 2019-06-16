@@ -104,6 +104,10 @@
 		grid-template-columns: 2% 1fr 1fr 2%;
 	}
 
+	.layout__container--recipeDetails {
+		grid-template-columns: 2% 2fr 1fr 2%;
+	}
+
 	.layout__container--list {
 		grid-template-columns: 1fr;
 	}

@@ -67,10 +67,6 @@ class RecipeInfo extends Component {
 								)}
 							</ul>
 						</div>
-						<div>
-							<div><span>{translate('views.numberOfEntries')}:</span> <span>{numberOfEntries}</span></div>
-							<div><span>{translate('views.recipeSourceLink')}:</span> <span>{sourceLink}</span></div>
-						</div>
 					</div>
 				</div>
 			)}
