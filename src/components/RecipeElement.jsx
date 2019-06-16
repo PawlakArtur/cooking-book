@@ -35,7 +35,7 @@ class RecipeElement extends Component {
 		return <li className="recipe__element">
 			<div className="recipe__container">
 				<div className="recipe__image-wrapper">
-					<img src={photoPath} className="recipe__image" alt="recipe photo" />
+					<img src={photoPath} className="recipe__image" alt="recipe" />
 				</div>
 				<div className="recipe__information">
 					<h2 className="recipe__title"><Link className="recipe__link" to={`/recipeDetails/${recipe.id}`}>{recipe.name}</Link></h2>

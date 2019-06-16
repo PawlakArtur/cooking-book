@@ -46,7 +46,7 @@ class RecipeInfo extends Component {
 			{ !loading
 			&& (
 				<div className="layout__recipeDetails layout__container--no-padding layout__container--background">
-					<img src={photoPath} className="recipeDetails__photo" alt="recipe photo" />
+					<img src={photoPath} className="recipeDetails__photo" alt="recipe" />
 					<div className="recipeDetails__basicInfo">
 						<div><span>{translate('views.executionTime')}:</span> <span>{formattedExecutionTime.hours}h {formattedExecutionTime.minutes ? `${formattedExecutionTime.minutes}m` : ''}</span></div>
 						<div><span>{translate('views.category')}:</span> <span>{recipeCategoryName}</span></div>
