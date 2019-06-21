@@ -38,5 +38,7 @@
 	"numberOfEntries": "Liczba wejść",
 	"recomended": "Rekomendowany",
 	"products": "Lista produktów",
-	"addPhoto": "Dodaj zdjęcie"
+	"addPhoto": "Dodaj zdjęcie",
+	"unit": "Jednostka miary",
+	"chooseUnit": "Wybierz jednostę miary"
 }

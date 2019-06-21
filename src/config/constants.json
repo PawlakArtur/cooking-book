@@ -1,0 +1,24 @@
+{
+	"units": {
+		"kg": {
+			"name": "kg",
+			"step": "0.5"
+		},
+		"g": {
+			"name": "g",
+			"step": "10"
+		},
+		"l": {
+			"name": "l",
+			"step": "0.5"
+		},
+		"ml": {
+			"name": "ml",
+			"step": "10"
+		},
+		"pcs": {
+			"name": "pcs",
+			"step": "0.5"
+		}
+	}
+}

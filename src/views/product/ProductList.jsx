@@ -18,7 +18,7 @@ class ProductList extends Component {
 				</div>
 				<ul className="layout__main">
 					{productList.map(product =>
-						<li key={product.id}>{product.name}</li>
+						<li key={product.id}>{product.name} {translate(`units.${product.unit}`)}</li>
 					)}
 				</ul>
 			</div>

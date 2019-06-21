@@ -38,5 +38,7 @@
 	"numberOfEntries": "Number of entries",
 	"recomended": "Recomended",
 	"products": "List of products",
-	"addPhoto": "Add photo"
+	"addPhoto": "Add photo",
+	"unit": "Unit",
+	"chooseUnit": "Choose unit"
 }
