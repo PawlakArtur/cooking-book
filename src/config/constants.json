@@ -19,6 +19,18 @@
 		"pcs": {
 			"name": "pcs",
 			"step": "0.5"
+		},
+		"tbs": {
+			"name": "tbs",
+			"step": "0.5"
+		},
+		"tes": {
+			"name": "tes",
+			"step": "0.5"
+		},
+		"pnc": {
+			"name": "pnc",
+			"step": "0.5"
 		}
 	}
 }
