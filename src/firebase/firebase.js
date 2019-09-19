@@ -1,26 +1,14 @@
+/* eslint-disable no-undef */
 import firebase from 'firebase';
 
-const devConfig = {
-	apiKey: 'AIzaSyD0g1U-vlS6dYcWbogjbOtFzglFdgY14EY',
-	authDomain: 'cooking-book-b938a.firebaseapp.com',
-	databaseURL: 'https://cooking-book-b938a.firebaseio.com',
-	projectId: 'cooking-book-b938a',
-	storageBucket: 'cooking-book-b938a.appspot.com',
-	messagingSenderId: '674061107100'
+const config = {
+	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+	databaseURL: process.env.REACT_APP_FIREBASE_DATA_BASE_URL,
+	projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 };
-
-const prodConfig = {
-	apiKey: 'AIzaSyCW74HHM_OQBsQz3KQ25f_nKRj2DoTFuoM',
-	authDomain: 'cooking-book-prod.firebaseapp.com',
-	databaseURL: 'https://cooking-book-prod.firebaseio.com',
-	projectId: 'cooking-book-prod',
-	storageBucket: '',
-	messagingSenderId: '324223952565',
-	appId: '1:324223952565:web:0e82a9bfecd0d04d07c0fc'
-};
-
-// eslint-disable-next-line no-undef
-const config = process.env.NODE_ENV === 'development' ? devConfig : prodConfig;
 
 if (!firebase.apps.length) {
 	firebase.initializeApp(config);
