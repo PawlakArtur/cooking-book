@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { auth, db } from '../../firebase';
 import { Button, withRouterWrapper } from '../../components';
+import { constants } from '../../config';
 
 const INITIAL_STATE = {
 	userName: '',
@@ -22,10 +23,18 @@ class SignUp extends Component {
 	onSubmit(e) {
 		const { email, password, userName } = this.state;
 		const { history } = this.props;
+		const { defaultLanguage, defaultUserRole } = constants;
 
 		auth.doCreateUserWithEmailAndPassword(email, password)
 			.then(authUser => {
-				db.doCreateUser(authUser.user.uid, userName, email)
+				const createUserParameters = {
+					id: authUser.user.uid,
+					username: userName,
+					email,
+					language: defaultLanguage,
+					role: defaultUserRole
+				};
+				db.doCreateUser(createUserParameters)
 					.then(() => {
 						this.setState({ ...INITIAL_STATE });
 						history.push('/');
