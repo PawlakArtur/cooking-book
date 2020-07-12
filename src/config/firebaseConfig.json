@@ -1,0 +1,9 @@
+{
+    "apiKey": "AIzaSyDHUvaI_YuEsyA1YXHuoJSfdBm4HNlcidk",
+    "authDomain": "cooking-book-dev.firebaseapp.com",
+    "databaseURL": "https://cooking-book-dev.firebaseio.com",
+    "projectId": "cooking-book-dev",
+    "storageBucket": "cooking-book-dev.appspot.com",
+    "messagingSenderId": "182156978027",
+    "appId": "1:182156978027:web:a273466b52157d1de88e2e"
+  }
