@@ -10,17 +10,17 @@ const menuConfig: ImenuItem[] = [{
 	name: 'Login',
 	visibility: ImenuItemVisibility.Unauthorized,
 	type: ImenuType.Link,
-	path: '/',
+	path: '/login',
 }, {
 	name: 'Register',
 	visibility: ImenuItemVisibility.Unauthorized,
 	type: ImenuType.Link,
-	path: '/',
+	path: '/register',
 }, {
 	name: 'Recipes',
 	visibility: ImenuItemVisibility.Authorized,
 	type: ImenuType.Link,
-	path: '/',
+	path: '/recipes',
 }, {
 	name: 'Logout',
 	visibility: ImenuItemVisibility.Always,

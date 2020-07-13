@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { menuConfig } from '../config';
 import { UseIsUserLogged } from '../hooks';
 import { ImenuItem, ImenuItemVisibility, ImenuLink, ImenuFunction } from '../types';
-import { firebase } from '../services';
 
 const Menu = () => {
 	const isUserLogged = UseIsUserLogged(); 
@@ -38,11 +37,6 @@ const Menu = () => {
         <nav>
 			<ul>
 				{getMenuItems()}
-				<li>
-					<span onClick={() => {
-						firebase.logout()
-					}}>Logout</span>
-				</li>
 			</ul>
         </nav>
 	);
