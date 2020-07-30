@@ -1,38 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { firebase } from '../services';
+import { IrecipeOnList } from '../types';
 
-export interface IRecipe {
-	id: string,
-	name: string,
-	type: string,
-  }
-
-const Recipes = () => {	  
-	const [recipes, setRecipes] = useState<IRecipe[]>([]);
+const Recipes = () => {
+	const [recipes, setRecipes] = useState<IrecipeOnList[]>([]);
 	useEffect(() => {
-	  firebase.db.collection('recipes').get().then((querySnapshot) => {
-		const recipesArray: IRecipe[] = querySnapshot.docs.map(doc => {
-		  return {
-			id: doc.id,
-			name: doc.data().name,
-			type: doc.data().type,
-		  }
-		});
-		setRecipes(recipesArray);
-	  });
+		firebase.getRecipesList()
+			.then((recipes) => {
+				setRecipes(recipes);
+			});
 	}, []);
 	return (
-		<div>
-			{recipes.map((recipe: IRecipe) => {
-				return (
-					<div key={`${recipe.id}`}>
-						<Link to={`/recipe/${recipe.id}`}>{recipe.name}</Link>
-					</div>
-				)
+		<ul>
+			{recipes.map((recipe) => {
+				return <li key={recipe.id}>{recipe.name}</li>
 			})}
-		</div>
-	);
+		</ul>
+	)
 }
 
 export default Recipes;

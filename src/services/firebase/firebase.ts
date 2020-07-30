@@ -38,6 +38,19 @@ class Firebase {
 			this.auth.onAuthStateChanged(resolve)
 		})
 	}
+
+	getRecipesList() {
+		return this.db.collection('recipes').get().then((querySnapshot) => {
+			const recipesArray = querySnapshot.docs.map(doc => {
+				return {
+					id: doc.id,
+					name: doc.data().name,
+					type: doc.data().type,
+				};
+			});
+			return recipesArray;
+		})	
+	}
 }
 
 export default new Firebase();
