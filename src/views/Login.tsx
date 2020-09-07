@@ -33,14 +33,16 @@ const Login = () => {
 		  });
 	}, []);
 	return (
-		<div>
+		<React.Fragment>
 			<h1>Login</h1>
-			<form onSubmit={handleSignup}>
-				<input type="text" name="email" onChange={handleEmailInput} />
-				<input type="password" name="password" onChange={handlePasswordInput} />
-				<button type="submit">Login</button>
+			<form className="form" onSubmit={handleSignup}>
+				<label className="form__label" htmlFor="email">Email</label>
+				<input className="form__input" type="text" name="email" onChange={handleEmailInput} />
+				<label className="form__label" htmlFor="password">Password</label>
+				<input className="form__input" type="password" name="password" onChange={handlePasswordInput} />
+				<button className="form__button" type="submit">Login</button>
 			</form>
-		</div>
+		</React.Fragment>
 	)
 }
 

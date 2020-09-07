@@ -30,15 +30,18 @@ const Register = () => {
 	}
 
 	return (
-		<div>
+		<React.Fragment>
 			<h1>Register</h1>
-			<form onSubmit={handleSignup}>
-				<input type="text" name="email" onChange={handleEmailInput} />
-				<input type="password" name="password" onChange={handlePasswordInput} />
-				<input type="text" name="displayName" onChange={handleDisplayNameInput} />
-				<button type="submit">Login</button>
+			<form className="form" onSubmit={handleSignup}>
+				<label htmlFor="email">Email</label>
+				<input className="form__input" type="text" name="email" onChange={handleEmailInput} />
+				<label htmlFor="password">Password</label>
+				<input className="form__input" type="password" name="password" onChange={handlePasswordInput} />
+				<label htmlFor="displayName">Display name</label>
+				<input className="form__input" type="text" name="displayName" onChange={handleDisplayNameInput} />
+				<button className="form__button" type="submit">Login</button>
 			</form>
-		</div>
+		</React.Fragment>
 	)
 }
 

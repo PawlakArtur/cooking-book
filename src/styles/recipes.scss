@@ -1,0 +1,16 @@
+.recipes {
+    padding: 8px;
+    &__item {
+        background: #5a9fb3;
+        padding: 8px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        width: 250px;
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            width: 100%;
+            display: block;
+        }
+    }
+}

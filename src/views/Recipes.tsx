@@ -16,11 +16,12 @@ const Recipes = () => {
 
 	return (
 		<React.Fragment>
+			<h1>Recipes</h1>
 			{recipes.length > 0 && (
-				<ul>
+				<ul className="recipes">
 					{recipes.map((recipe) => {
 						return (
-							<li key={recipe.id}>
+							<li key={recipe.id} className="recipes__item">
 								<Link to={`/recipe/${recipe.id}`}>{recipe.name}</Link>
 							</li>
 						)

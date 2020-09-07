@@ -39,24 +39,24 @@ const AddRecipe = () => {
 	return (
 		<React.Fragment>
             <h1>Add recipe</h1>
-			<form onSubmit={handleAddRecipe}>
-				<label htmlFor="name">name</label>
-				<input type="string" id="name" value={name} onChange={handleOnNameChange} />
-				<label htmlFor="type">type</label>
-				<select id="type" value={type} onChange={handleOnTypeChange}>
+			<form className="form" onSubmit={handleAddRecipe}>
+				<label className="form__label" htmlFor="name">name</label>
+				<input className="form__input" type="string" id="name" value={name} onChange={handleOnNameChange} />
+				<label className="form__label" htmlFor="type">type</label>
+				<select className="form__input" id="type" value={type} onChange={handleOnTypeChange}>
 					<option value={IrecipeType.breakfast}>breakfast</option>
 					<option value={IrecipeType.dinner}>dinner</option>
 					<option value={IrecipeType.lunch}>lunch</option>
 					<option value={IrecipeType.snack}>snack</option>
 					<option value={IrecipeType.supper}>supper</option>
 				</select>
-				<label htmlFor="ingredients">ingredients</label>
-				<input type="string" id="ingredients" value={ingredients} onChange={handleOnIngredientsChange} />
-				<label htmlFor="description">description</label>
-				<input type="string" id="description" value={description} onChange={handleOnDescriptionChange} />
-				<label htmlFor="executionTime">executionTime</label>
-				<input type="number" id="executionTime" value={executionTime} onChange={handleOnExecutionTimeChange} />
-				<button type="submit">Add recipe</button>
+				<label className="form__label" htmlFor="ingredients">ingredients</label>
+				<input className="form__input" type="string" id="ingredients" value={ingredients} onChange={handleOnIngredientsChange} />
+				<label className="form__label" htmlFor="description">description</label>
+				<input className="form__input" type="string" id="description" value={description} onChange={handleOnDescriptionChange} />
+				<label className="form__label" htmlFor="executionTime">executionTime</label>
+				<input className="form__input" type="number" id="executionTime" value={executionTime} onChange={handleOnExecutionTimeChange} />
+				<button className="form__button" type="submit">Add recipe</button>
 			</form>
 		</React.Fragment>
 	)

@@ -28,7 +28,7 @@ const menuConfig: ImenuItem[] = [{
 	path: '/addRecipe',
 }, {
 	name: 'Logout',
-	visibility: ImenuItemVisibility.Always,
+	visibility: ImenuItemVisibility.Authorized,
 	type: ImenuType.Function,
 	handler: () => {
 		firebase.logout();

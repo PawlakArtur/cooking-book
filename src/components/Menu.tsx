@@ -21,21 +21,21 @@ const Menu = () => {
 		}).map((item: ImenuLink | ImenuFunction, index: number) => {
 			if ((item as ImenuLink).path) {
 				return (
-					<li key={`menu_item_${index}`}>
-						<Link to={(item as ImenuLink).path}>{item.name}</Link>;
+					<li key={`menu_item_${index}`} className="menu__item">
+						<Link to={(item as ImenuLink).path}>{item.name}</Link>
 					</li>
 				);
 			}
 			return (
-				<li key={`menu_item_${index}`}>
+				<li key={`menu_item_${index}`} className="menu__item">
 					<span onClick={(item as ImenuFunction).handler}>{item.name}</span>
 				</li>
 				);
 		});
 	};
 	return (
-        <nav>
-			<ul>
+        <nav className="menu">
+			<ul className="menu__container">
 				{getMenuItems()}
 			</ul>
         </nav>
