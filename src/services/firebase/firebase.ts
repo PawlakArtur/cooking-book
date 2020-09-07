@@ -82,8 +82,6 @@ class Firebase {
 			description: recipe.description,
 			executionTime: recipe.executionTime,
 			authorId: this.auth.currentUser?.uid,
-		}).then((data) => {
-			console.log(data);
 		});
 	}
 }

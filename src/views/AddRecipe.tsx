@@ -1,6 +1,6 @@
 import React, { useState, SyntheticEvent, FormEvent } from 'react';
 import { firebase } from '../services';
-import { IrecipeDetails, IrecipeType  } from '../types';
+import { IrecipeDetails, IrecipeType } from '../types';
 
 const AddRecipe = () => {
 	const [name, setName ] = useState('');
@@ -23,8 +23,8 @@ const AddRecipe = () => {
 	const handleOnNameChange = (event: FormEvent<HTMLInputElement>) => {
 		setName(event.currentTarget.value);
 	}
-	const handleOnTypeChange = (event: FormEvent<HTMLInputElement>) => {
-		// setType(event.currentTarget.value as IrecipeType);
+	const handleOnTypeChange = (event: FormEvent<HTMLSelectElement>) => {
+		setType(event.currentTarget.value as IrecipeType);
 	}
 	const handleOnIngredientsChange = (event: FormEvent<HTMLInputElement>) => {
 		setIngredients(event.currentTarget.value);
@@ -43,7 +43,13 @@ const AddRecipe = () => {
 				<label htmlFor="name">name</label>
 				<input type="string" id="name" value={name} onChange={handleOnNameChange} />
 				<label htmlFor="type">type</label>
-				<input type="string" id="type" value={type} onChange={handleOnTypeChange} />
+				<select id="type" value={type} onChange={handleOnTypeChange}>
+					<option value={IrecipeType.breakfast}>breakfast</option>
+					<option value={IrecipeType.dinner}>dinner</option>
+					<option value={IrecipeType.lunch}>lunch</option>
+					<option value={IrecipeType.snack}>snack</option>
+					<option value={IrecipeType.supper}>supper</option>
+				</select>
 				<label htmlFor="ingredients">ingredients</label>
 				<input type="string" id="ingredients" value={ingredients} onChange={handleOnIngredientsChange} />
 				<label htmlFor="description">description</label>
