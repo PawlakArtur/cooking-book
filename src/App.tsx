@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import { Home, Login, Register, Recipes, Recipe } from './views';
+import { Home, Login, Register, Recipes, Recipe, AddRecipe } from './views';
 import { Menu } from './components';
 
 function App() {
@@ -21,6 +21,9 @@ function App() {
             </Route>
             <Route path="/recipe/:id">
               <Recipe />
+            </Route>
+            <Route path="/addRecipe">
+              <AddRecipe />
             </Route>
             <Route path="/">
               <Home />

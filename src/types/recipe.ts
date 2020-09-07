@@ -5,18 +5,18 @@ export interface IrecipeOnList {
 }
 
 export interface IrecipeDetails {
-	id: string,
-	name: string,
-	type: IrecipeType,
-	ingredients: string,
-	description: string,
-	executionTime: number,
+	id?: string,
+	name?: string,
+	type?: IrecipeType,
+	ingredients?: string,
+	description?: string,
+	executionTime?: number,
 }
 
 export enum IrecipeType {
-	breakfast,
-	lunch,
-	dinner,
-	snack,
-	supper,
+	breakfast = 'breakfast',
+	lunch = 'lunch',
+	dinner = 'dinner',
+	snack = 'snack',
+	supper = 'supper',
 }

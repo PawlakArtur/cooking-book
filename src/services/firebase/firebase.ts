@@ -1,8 +1,9 @@
 import  app from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { v4 as uuidv4 } from 'uuid';
 import { firebaseConfig } from '../../config';
-import { Iuser } from '../../types';
+import { Iuser, IrecipeDetails } from '../../types';
 
 class Firebase {
 	db: firebase.firestore.Firestore;
@@ -39,17 +40,51 @@ class Firebase {
 		})
 	}
 
-	getRecipesList() {
-		return this.db.collection('recipes').get().then((querySnapshot) => {
-			const recipesArray = querySnapshot.docs.map(doc => {
-				return {
-					id: doc.id,
-					name: doc.data().name,
-					type: doc.data().type,
-				};
+	getRecipesList() {		
+		return this.db.collection("recipes").where("authorId", "==", this.auth.currentUser?.uid)
+			.get()
+			.then(function(querySnapshot) {
+				return querySnapshot.docs.map(function(doc) {
+					return {
+						id: doc.id,
+						name: doc.data().name,
+						type: doc.data().type,
+						public: doc.data().public,
+						authorId: doc.data().authorId,
+					};
+				});
 			});
-			return recipesArray;
-		})	
+	}
+
+	getRecipe(id: string) {		
+		return this.db.collection("recipes").doc(id)
+			.get()
+			.then((querySnapshot) => {
+				return {
+					id: querySnapshot.id,
+					name: querySnapshot.data()?.name,
+					type: querySnapshot.data()?.type,
+					ingredients: querySnapshot.data()?.ingredients,
+					description: querySnapshot.data()?.description,
+					executionTime: querySnapshot.data()?.executionTime,
+				}
+			}
+		);
+	}
+
+	setRecipe(recipe: IrecipeDetails) {
+		const recipeId = uuidv4();
+		return this.db.collection("recipes").doc(recipeId).set({
+			id: recipeId,
+			name: recipe.name,
+			type: recipe.type,
+			ingredients: recipe.ingredients,
+			description: recipe.description,
+			executionTime: recipe.executionTime,
+			authorId: this.auth.currentUser?.uid,
+		}).then((data) => {
+			console.log(data);
+		});
 	}
 }
 
