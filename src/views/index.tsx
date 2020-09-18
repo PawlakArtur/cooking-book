@@ -5,3 +5,4 @@ export { default as Recipes } from './Recipes';
 export { default as Recipe } from './Recipe';
 export { default as AddRecipe } from './AddRecipe';
 export { default as AddIngredient } from './AddIngredient';
+export { default as Ingredients } from './Ingredients';
