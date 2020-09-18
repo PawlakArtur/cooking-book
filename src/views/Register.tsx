@@ -33,13 +33,13 @@ const Register = () => {
 		<React.Fragment>
 			<h1>Register</h1>
 			<form className="form" onSubmit={handleSignup}>
-				<label htmlFor="email">Email</label>
+				<label className="form__label" htmlFor="email">Email</label>
 				<input className="form__input" type="text" name="email" onChange={handleEmailInput} />
-				<label htmlFor="password">Password</label>
+				<label className="form__label" htmlFor="password">Password</label>
 				<input className="form__input" type="password" name="password" onChange={handlePasswordInput} />
-				<label htmlFor="displayName">Display name</label>
+				<label className="form__label" htmlFor="displayName">Display name</label>
 				<input className="form__input" type="text" name="displayName" onChange={handleDisplayNameInput} />
-				<button className="form__button" type="submit">Login</button>
+				<button className="form__button" type="submit">Register</button>
 			</form>
 		</React.Fragment>
 	)

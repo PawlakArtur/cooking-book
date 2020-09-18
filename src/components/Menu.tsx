@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { menuConfig } from '../config';
 import { UseIsUserLogged } from '../hooks';
 import { ImenuItem, ImenuItemVisibility, ImenuLink, ImenuFunction } from '../types';
@@ -22,7 +22,13 @@ const Menu = () => {
 			if ((item as ImenuLink).path) {
 				return (
 					<li key={`menu_item_${index}`} className="menu__item">
-						<Link to={(item as ImenuLink).path}>{item.name}</Link>
+						<NavLink
+							exact
+							to={(item as ImenuLink).path}
+							activeClassName="selected"
+						>
+							{item.name}
+						</NavLink>
 					</li>
 				);
 			}

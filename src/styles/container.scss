@@ -3,9 +3,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #ecf2ff;
+    box-sizing: border-box;
     &__view {
         max-width: 1200px;
         min-width: 800px;
-        padding: 16px 0;
+        background: #ffffff;
+        padding: 16px;
+        border-radius: 8px;
+    }
+    * {
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 }
