@@ -11,6 +11,7 @@ export interface IrecipeDetails {
 	ingredients?: string,
 	description?: string,
 	executionTime?: number,
+	authorId?: string,
 }
 
 export enum IrecipeType {

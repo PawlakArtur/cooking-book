@@ -27,6 +27,11 @@ const menuConfig: ImenuItem[] = [{
 	type: ImenuType.Link,
 	path: '/addRecipe',
 }, {
+	name: 'Add Ingredient',
+	visibility: ImenuItemVisibility.Authorized,
+	type: ImenuType.Link,
+	path: '/addIngredient',
+}, {
 	name: 'Logout',
 	visibility: ImenuItemVisibility.Authorized,
 	type: ImenuType.Function,

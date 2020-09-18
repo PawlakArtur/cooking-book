@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import { v4 as uuidv4 } from 'uuid';
 import { firebaseConfig } from '../../config';
-import { Iuser, IrecipeDetails } from '../../types';
+import { Iuser, IrecipeDetails, IingredientDetails } from '../../types';
 
 class Firebase {
 	db: firebase.firestore.Firestore;
@@ -67,6 +67,7 @@ class Firebase {
 					ingredients: querySnapshot.data()?.ingredients,
 					description: querySnapshot.data()?.description,
 					executionTime: querySnapshot.data()?.executionTime,
+					authorId: this.auth.currentUser?.uid,
 				}
 			}
 		);
@@ -81,6 +82,44 @@ class Firebase {
 			ingredients: recipe.ingredients,
 			description: recipe.description,
 			executionTime: recipe.executionTime,
+			authorId: this.auth.currentUser?.uid,
+		});
+	}
+
+	getIngredientsList() {
+		return this.db.collection("ingredients")
+			.get()
+			.then(function(querySnapshot) {
+				return querySnapshot.docs.map(function(doc) {
+					return {
+						id: doc.id,
+						name: doc.data().name,
+					};
+				});
+			});
+	}
+
+	getIngredient(id: string) {
+		return this.db.collection("ingredients").doc(id)
+			.get()
+			.then((querySnapshot) => {
+				return {
+					id: querySnapshot.id,
+					name: querySnapshot.data()?.name,
+					quantity: querySnapshot.data()?.quantity,
+					unit: querySnapshot.data()?.unit,
+					authorId: querySnapshot.data()?.unit,
+				}
+			});
+	}
+
+	setIngredient(ingredient: IingredientDetails) {
+		const ingredientId = uuidv4();
+		console.log(ingredient);
+		return this.db.collection("ingredients").doc(ingredientId).set({
+			id: ingredientId,
+			name: ingredient.name,
+			unit: ingredient.unit,
 			authorId: this.auth.currentUser?.uid,
 		});
 	}
