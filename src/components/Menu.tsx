@@ -34,7 +34,12 @@ const Menu = () => {
 			}
 			return (
 				<li key={`menu_item_${index}`} className="menu__item">
-					<span onClick={(item as ImenuFunction).handler}>{item.name}</span>
+					<span
+						className="menu__item-text"
+						onClick={(item as ImenuFunction).handler}
+					>
+						{item.name}
+					</span>
 				</li>
 				);
 		});
